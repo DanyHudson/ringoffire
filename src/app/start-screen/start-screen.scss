@@ -1,11 +1,21 @@
-
-
-
 .start-screen {
     background-color: #404040;
     width: 100vw;
     height: 100vh;
     max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    // object-fit: cover;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+
     // @include dFlex($jc: center, $ai: center, $fd: column);
 
     // >img {
@@ -15,8 +25,8 @@
     // }
 }
 
- .start-screen  img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+//  .start-screen  img {
+//         width: 100%;
+//         height: 100%;
+//         object-fit: cover;
+//     }
