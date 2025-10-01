@@ -9,7 +9,7 @@
     flex-direction: column;
     // object-fit: cover;
 
-    img {
+    >img {
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -30,3 +30,24 @@
 //         height: 100%;
 //         object-fit: cover;
 //     }
+
+.start-label-box {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 80px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+
+    >img {
+        width: 32vw;
+        height: auto;
+
+        &:hover {
+            filter: brightness(1.75);
+            cursor: pointer;
+        }
+    }
+
+}
