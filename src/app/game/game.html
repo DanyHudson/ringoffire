@@ -2,8 +2,19 @@
 
     <div class="card-stack">
         @for (c of [0, 1, 2, 3, 4]; track c; let i = $index;) {
-        <img src="assets/img/cards_old/card_cover.png" alt="" style="position: absolute; left: {{i * 5}}px;">
+        <img src="assets/img/cards_old/card_cover.png" alt="" [ngStyle]="{ 'right.px': (i * 5)}">
         }
+
+        <img (click)="takeCard()" class="top-card" style="right: 32px;" src="assets/img/cards_old/card_cover.png"
+            alt="">
+        <!-- <img (click)="takeCard()"  @if=(pickCardAnimation) class="top-card pickCardAnimation" style="right: 32px;" src="assets/img/cards_old/spade_1.png" alt=""> -->
+
+        @if (pickCardAnimation) {
+        <img (click)="takeCard()" class="pick-card" style="right: 32px;"
+            src="assets/img/cards_old/spade_1.png" alt="">
+
+        }
+
     </div>
 
 </div>

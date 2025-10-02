@@ -9,8 +9,42 @@
 }
 
 .card-stack {
+    position: relative;
+
     img {
         position: absolute;
         width: 120px;
     }
+}
+
+.top-card {
+    cursor: pointer;
+    transition: all 125ms ease-in-out;
+
+    &:hover {
+        transform: scale(1.1) translateY(-10px);
+    }
+}
+
+.pick-card {
+    transition: all 125ms ease-in-out;
+    // transform: scale(1.5) !important;
+    animation: pick-card-animation 1s forwards ease-in-out;
+    transform: scale(1) translateX(140px) translateY(-224px) rotate(27deg);
+}
+
+@keyframes pick-card-animation {
+    0% {
+        transform: scale(1);
+    }
+    40% {
+        transform: scale(1.7);
+    }
+    60% {
+        transform: scale(1.7) ;
+    }
+    100% {
+        transform: scale(1) translateX(140px) translateY(-224px) rotate(24deg);
+    }
+    
 }
