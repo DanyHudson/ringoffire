@@ -32,6 +32,7 @@ export class Game {
 
       setTimeout(() => {
         this.pickCardAnimation = false;
+        this.currentCard = undefined; // Hide the card after animation
       }, 1500);
     }
   }
