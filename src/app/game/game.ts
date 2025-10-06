@@ -12,7 +12,8 @@ import { GameData } from '../../../src/models/game-data';
 })
 export class Game {
   pickCardAnimation = false;
-  currentCard: string | undefined = '';
+  currentCard: string | undefined = undefined;
+  // currentCard: string | undefined = '';
   gameData: GameData = new GameData();
 
   constructor() {
@@ -32,7 +33,7 @@ export class Game {
 
       setTimeout(() => {
         this.pickCardAnimation = false;
-        this.currentCard = undefined; // Hide the card after animation
+        // this.currentCard = undefined;
       }, 1500);
     }
   }

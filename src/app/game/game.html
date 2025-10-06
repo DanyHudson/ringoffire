@@ -9,9 +9,11 @@
             alt="">
         <!-- <img (click)="takeCard()"  @if=(pickCardAnimation) class="top-card pickCardAnimation" style="right: 32px;" src="assets/img/cards_old/spade_1.png" alt=""> -->
 
-        @if (pickCardAnimation) {
-        <img  class="pick-card" style="right: 32px;"
-            src="assets/img/cards_old/{{ currentCard }}.png" alt="">
+        @if (pickCardAnimation && currentCard) {
+        <!-- <img  class="pick-card" style="right: 32px;"
+            src="assets/img/cards_old/{{ currentCard }}.png" alt=""> -->
+
+        <img class="pick-card" style="right: 32px;" [src]="'assets/img/cards_old/' + currentCard + '.png'" alt="">
 
         }
 
