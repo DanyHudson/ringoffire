@@ -16,7 +16,7 @@ export class Game {
   // currentCard: string | undefined = '';
   gameData: GameData = new GameData();
 
-  constructor(private cdr: ChangeDetectorRef) {  // here 'cdr' needed to be added to be able to manually trigger the vanisching of the card
+  constructor(private cdr: ChangeDetectorRef) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
     this.newGame();
   }
 
@@ -27,15 +27,18 @@ export class Game {
 
   takeCard() {
     if (!this.pickCardAnimation) {
-      this.currentCard = this.gameData.stack.pop();
-      console.log(this.currentCard);
+      // this.currentCard = this.gameData.stack.pop();
+      this.currentCard = this.gameData.stack.pop() || '';
       this.pickCardAnimation = true;
+      console.log('new card: ' + this.currentCard);
+      console.log('game data is ', this.gameData);
 
       setTimeout(() => {
+        this.gameData.playedCards.push(this.currentCard as string);
         this.pickCardAnimation = false;
         // this.currentCard = undefined;
         this.cdr.detectChanges();
-      }, 500);
+      }, 1000);
 
     }
   }
