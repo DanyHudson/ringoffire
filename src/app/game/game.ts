@@ -1,5 +1,5 @@
 
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameData } from '../../../src/models/game-data';
 
@@ -16,7 +16,7 @@ export class Game {
   // currentCard: string | undefined = '';
   gameData: GameData = new GameData();
 
-  constructor() {
+  constructor(private cdr: ChangeDetectorRef) {  // here 'cdr' needed to be added to be able to manually trigger the vanisching of the card
     this.newGame();
   }
 
@@ -34,7 +34,9 @@ export class Game {
       setTimeout(() => {
         this.pickCardAnimation = false;
         // this.currentCard = undefined;
-      }, 1500);
+        this.cdr.detectChanges();
+      }, 500);
+
     }
   }
 
