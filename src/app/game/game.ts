@@ -2,11 +2,12 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameData } from '../../../src/models/game-data';
+import { Player } from '../player/player';
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, Player],
   templateUrl: './game.html',
   styleUrl: './game.scss'
 })
