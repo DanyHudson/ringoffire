@@ -1,5 +1,9 @@
+@for (player of gameData.players; track player; let i = $index;) {
+<app-player [style.top.px]="100 + i * 148" class="player-position"> {{player}} </app-player>
 
-<app-player style="top: 100px;" class="player-position">    </app-player>
+}
+
+
 
 <div class="field">
 
