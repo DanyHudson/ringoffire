@@ -1,0 +1,28 @@
+.add-btn-container {
+    position: relative;
+}
+
+.add-btn {
+    position: absolute;
+    right: 32px;
+    bottom: 32px;;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: none;
+
+    img {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+    }
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: all 125ms ease-in-out;
+        filter: drop-shadow(0 0 0.75rem white);
+    }
+
+}
