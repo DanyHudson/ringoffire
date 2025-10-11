@@ -7,3 +7,21 @@
     subhead-color: red,
   ));
 }
+
+.mat-dialog-container {
+    background-color: rgba(0, 0, 0, 1.0);
+    color: white;
+
+    h2 {
+        font-family: 'Courier New', Courier, monospace;
+        color: white;;
+    }
+}
+
+.mat-dialog-container button {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: orange;
+    color: black;
+    border: none;
+}
+
