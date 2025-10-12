@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { GameData } from '../../../src/models/game-data';
 import { Player } from '../player/player';
 import { AddButton } from '../add-button/add-button';
+import { GameInfo } from "../game-info/game-info";
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [CommonModule, Player, AddButton],
+  imports: [CommonModule, Player, AddButton, GameInfo],
   templateUrl: './game.html',
   styleUrl: './game.scss'
 })
