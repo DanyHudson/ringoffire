@@ -10,5 +10,6 @@ import { CommonModule } from '@angular/common';
 export class Player {
 
   @Input() name: string = '';
+  @Input() playerActive: boolean = false;
   
 }
