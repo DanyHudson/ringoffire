@@ -45,4 +45,8 @@ export class Game {
     }
   }
 
+  addPlayer(name: string) {
+  this.gameData.players.push(name);
+}
+
 }

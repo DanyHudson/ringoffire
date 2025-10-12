@@ -19,7 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './add-player-dialog.scss'
 })
 export class AddPlayerDialog {
-  playerName: string = '';
+  name: string = '';
 
   constructor(
     public dialogRef: MatDialogRef<AddPlayerDialog>,
@@ -31,6 +31,6 @@ export class AddPlayerDialog {
   }
 
   addPlayer(): void {
-    this.dialogRef.close(this.playerName);
+    this.dialogRef.close(this.name);
   }
 }
