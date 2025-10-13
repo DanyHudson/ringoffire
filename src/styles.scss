@@ -33,6 +33,10 @@ body {
   // Reset the user agent margin.
   margin: 0;
 }
+
+
+
+
 * {
     margin: 0;
     padding: 0;
@@ -51,3 +55,24 @@ html {
 // }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+// ::ng-deep .mat-mdc-dialog-panel {
+//   border-radius: 0 !important;
+// }
+
+//  .mat-mdc-dialog-container {
+//   --mdc-dialog-container-shape: 8px;
+// }
+
+// ::ng-deep .mat-mdc-dialog-panel,
+// ::ng-deep .mat-mdc-dialog-panel .mat-mdc-card {
+//   border-radius: 0 !important;
+// }
+
+
+:root {
+  @include mat.dialog-overrides((
+    container-shape: 8px,
+  ));
+}

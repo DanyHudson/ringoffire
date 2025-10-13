@@ -2,26 +2,34 @@
 
 // Customize the entire app. Change :root to your selector if you want to scope the styles.
 :root {
-  @include mat.dialog-overrides((
-    container-color: orange,
-    subhead-color: red,
-  ));
+  @include mat.dialog-overrides((container-color: orange,
+      subhead-color: red,
+    ));
 }
 
 .mat-dialog-container {
-    background-color: rgba(0, 0, 0, 1.0);
-    color: white;
+  background-color: rgba(0, 0, 0, 1.0);
+  color: white;
+  border-radius: 8px !important;;
 
-    h2 {
-        font-family: 'Courier New', Courier, monospace;
-        color: white;;
-    }
+  h2 {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    ;
+  }
 }
 
 .mat-dialog-container button {
-    font-family: 'Courier New', Courier, monospace;
-    background-color: orange;
-    color: black;
-    border: none;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: orange;
+  color: black;
+  border: none;
 }
 
+// ::ng-deep .mat-dialog-container {
+//   border-radius: 8px !important;
+// }
+
+// .mat-dialog-container ::ng-deep .mat-mdc-dialog-panel {
+//   border-radius: 0 !important;
+// }
