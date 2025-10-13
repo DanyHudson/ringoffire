@@ -36,6 +36,8 @@ export class Game {
       console.log('new card: ' + this.currentCard);
       console.log('game data is ', this.gameData);
 
+      this.gameData.currentPlayer++;
+      this.gameData.currentPlayer = this.gameData.currentPlayer % this.gameData.players.length;
       setTimeout(() => {
         this.gameData.playedCards.push(this.currentCard as string);
         this.pickCardAnimation = false;
@@ -47,7 +49,7 @@ export class Game {
   }
 
   addPlayer(name: string) {
-  this.gameData.players.push(name);
-}
+    this.gameData.players.push(name);
+  }
 
 }
