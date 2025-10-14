@@ -17,11 +17,11 @@ export class GameInfo implements OnInit, OnChanges {
     { title: 'Bust a jive', description: 'Player 1 makes a dance move. Player 2 repeats the dance move and adds a second one. ' },
     { title: 'Chicks', description: 'All girls drink.' },
     { title: 'Heaven', description: 'Put your hands up! The last player drinks!' },
-    { title: 'Mate', description: 'Pick a mate. Your mate must always drink when you drink and the other way around.' },
+    { title: 'Mate', description: 'Pick a mate. Your mate must always drink when you drink and vice versa.' },
     { title: 'Thumbmaster', description: 'Joker, come up with your own idea.' },
     { title: 'Dudes', description: 'All boys drink.' },
     { title: 'Quizmaster', description: 'Ask a question. The player to your left must answer it. If they answer incorrectly, they drink.' },
-    { title: 'Never have i ever...', description: 'Say something you never did. Everyone who did it has to drink.' },
+    { title: 'Never have i ever...', description: 'Say something you have never done. Everyone who has done it has to drink.' },
     { title: 'Rule', description: 'Make a rule. Everyone needs to drink when he breaks the rule.' },
   ];
 

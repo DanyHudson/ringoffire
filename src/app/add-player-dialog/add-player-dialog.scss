@@ -1,6 +1,5 @@
 @use '@angular/material' as mat;
 
-// Customize the entire app. Change :root to your selector if you want to scope the styles.
 :root {
   @include mat.dialog-overrides((container-color: orange,
       subhead-color: red,
@@ -24,12 +23,17 @@
   background-color: orange;
   color: black;
   border: none;
+
+  &:hover {
+    background-color: rgb(192, 108, 4);
+    cursor: pointer;
+  }
 }
 
-// ::ng-deep .mat-dialog-container {
-//   border-radius: 8px !important;
-// }
-
-// .mat-dialog-container ::ng-deep .mat-mdc-dialog-panel {
-//   border-radius: 0 !important;
-// }
+button[mat-button][disabled] {
+  background-color: #e0e0e0 !important; 
+  color: #888 !important;               
+  cursor: not-allowed;
+  border: none;
+ 
+}
