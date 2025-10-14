@@ -1,5 +1,5 @@
 
-// Include theming for Angular Material with `mat.theme()`.
+ Include theming for Angular Material with `mat.theme()`.
 // This Sass mixin will define CSS variables that are used for styling Angular Material
 // components according to the Material 3 design spec.
 // Learn more about theming and how to use it for your application's
@@ -34,9 +34,6 @@ body {
   margin: 0;
 }
 
-
-
-
 * {
     margin: 0;
     padding: 0;
@@ -56,7 +53,6 @@ html {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-
 // ::ng-deep .mat-mdc-dialog-panel {
 //   border-radius: 0 !important;
 // }
@@ -69,7 +65,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 // ::ng-deep .mat-mdc-dialog-panel .mat-mdc-card {
 //   border-radius: 0 !important;
 // }
-
 
 :root {
   @include mat.dialog-overrides((

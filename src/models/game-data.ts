@@ -14,8 +14,6 @@ export class GameData {
 
         shuffleArray(this.stack);
     }
-
-
 }
 
 function shuffleArray(array: any[]) {
@@ -23,11 +21,9 @@ function shuffleArray(array: any[]) {
     while (0 !== currentIndex) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
-
         temporaryValue = array[currentIndex];
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
     return array;
-
 }

@@ -1,13 +1,9 @@
 @for (player of gameData.players; track player; let i = $index;) {
-<app-player 
-[style.top.px]="90 + i * 122" class="player-position" 
-[playerActive]="i == gameData.currentPlayer"
-[name]="player"> 
+<app-player [style.top.px]="90 + i * 122" class="player-position" [playerActive]="i == gameData.currentPlayer"
+    [name]="player">
 </app-player>
 
 }
-
-
 
 <div class="field">
 
@@ -35,12 +31,7 @@
 
 </div>
 
-<!-- <app-game-info [activeCard]="currentCard" class="pin-bottom"> </app-game-info> -->
-
-<app-game-info
-  [activeCard]="currentCard"
-  [addPlayerNote]="addPlayerNote"
-  class="pin-bottom">
+<app-game-info [activeCard]="currentCard" [addPlayerNote]="addPlayerNote" class="pin-bottom">
 </app-game-info>
 
 <app-add-button class="add-btn-container" (playerAdded)="addPlayer($event)" title="Add player"></app-add-button>

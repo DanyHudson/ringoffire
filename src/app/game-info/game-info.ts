@@ -31,12 +31,11 @@ export class GameInfo implements OnInit, OnChanges {
   @Input() addPlayerNote: string = '';
 
   constructor() {
-
   }
 
   ngOnInit(): void {
-
   }
+
   ngOnChanges(): void {
     if (this.activeCard) {
       console.log('Current card is:', this.activeCard);
@@ -46,7 +45,6 @@ export class GameInfo implements OnInit, OnChanges {
       this.description = this.cardAction[cardNumber - 1].description;
     }
   }
-
 
 
 }
