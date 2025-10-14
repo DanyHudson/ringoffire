@@ -28,6 +28,7 @@ export class GameInfo implements OnInit, OnChanges {
   title = '';
   description = '';
   @Input() activeCard: string | undefined = '';
+  @Input() addPlayerNote: string = '';
 
   constructor() {
 
