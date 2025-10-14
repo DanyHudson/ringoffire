@@ -35,6 +35,12 @@
 
 </div>
 
-<app-game-info [activeCard]="currentCard" class="pin-bottom"> </app-game-info>
+<!-- <app-game-info [activeCard]="currentCard" class="pin-bottom"> </app-game-info> -->
 
-<app-add-button class="add-btn-container" (playerAdded)="addPlayer($event)" ></app-add-button>
+<app-game-info
+  [activeCard]="currentCard"
+  [addPlayerNote]="addPlayerNote"
+  class="pin-bottom">
+</app-game-info>
+
+<app-add-button class="add-btn-container" (playerAdded)="addPlayer($event)" title="Add player"></app-add-button>

@@ -16,8 +16,8 @@ import { GameInfo } from "../game-info/game-info";
 export class Game {
   pickCardAnimation = false;
   currentCard: string | undefined = undefined;
-  // currentCard: string | undefined = '';
   gameData: GameData = new GameData();
+  addPlayerNote: string = '';
 
   constructor(private cdr: ChangeDetectorRef) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
     this.newGame();
@@ -28,7 +28,31 @@ export class Game {
     console.log(this.gameData);
   }
 
+  // takeCard() {
+  //   if (!this.pickCardAnimation) {
+  //     // this.currentCard = this.gameData.stack.pop();
+  //     this.currentCard = this.gameData.stack.pop() || '';
+  //     this.pickCardAnimation = true;
+  //     console.log('new card: ' + this.currentCard);
+  //     console.log('game data is ', this.gameData);
+
+  //     this.gameData.currentPlayer++;
+  //     this.gameData.currentPlayer = this.gameData.currentPlayer % this.gameData.players.length;
+  //     setTimeout(() => {
+  //       this.gameData.playedCards.push(this.currentCard as string);
+  //       this.pickCardAnimation = false;
+  //       // this.currentCard = undefined;
+  //       this.cdr.detectChanges();
+  //     }, 1000);
+
+  //   }
+  // }
+
   takeCard() {
+    if (this.gameData.players.length === 0) {
+      this.addPlayerNote = 'Please add players before starting the game!';
+      return;
+    }
     if (!this.pickCardAnimation) {
       // this.currentCard = this.gameData.stack.pop();
       this.currentCard = this.gameData.stack.pop() || '';
@@ -46,7 +70,9 @@ export class Game {
       }, 1000);
 
     }
+    this.addPlayerNote = '';
   }
+
 
   addPlayer(name: string) {
     this.gameData.players.push(name);
