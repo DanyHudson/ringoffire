@@ -4,6 +4,10 @@ import { GameData } from '../../../src/models/game-data';
 import { Player } from '../player/player';
 import { AddButton } from '../add-button/add-button';
 import { GameInfo } from "../game-info/game-info";
+// import { FirestoreDataService } from "../firebase-services/firestore-data.service";
+// import { collection } from '@angular/fire/firestore';
+import { collectionData, collection, Firestore } from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-game',
@@ -19,8 +23,22 @@ export class Game {
   gameData: GameData = new GameData();
   addPlayerNote: string = '';
 
-  constructor(private cdr: ChangeDetectorRef) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
+  constructor(private cdr: ChangeDetectorRef, private Firestore: Firestore) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
     this.newGame();
+  }
+
+  // ngOnInit(): void {
+  //   const gamesCollection = collection(this.firestoreDataService.firestore, 'games');
+  //   valueChanges(gamesCollection).subscribe((games: any) => {
+  //     console.log('Games from Firestore:', games);
+  //   });
+  // }
+
+    ngOnInit(): void {
+      const gamesCollection = collection(this.Firestore, 'games');
+      valueChanges(gamesCollection).subscribe((games: any) => {
+        console.log('Games from Firestore:', games);
+      }); 
   }
 
   newGame() {
