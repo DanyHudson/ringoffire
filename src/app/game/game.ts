@@ -5,7 +5,6 @@ import { Player } from '../player/player';
 import { AddButton } from '../add-button/add-button';
 import { GameInfo } from "../game-info/game-info";
 // import { FirestoreDataService } from "../firebase-services/firestore-data.service";
-// import { collection } from '@angular/fire/firestore';
 import { collectionData, collection, Firestore } from '@angular/fire/firestore';
 
 
@@ -34,11 +33,11 @@ export class Game {
   //   });
   // }
 
-    ngOnInit(): void {
-      const gamesCollection = collection(this.Firestore, 'games');
-      valueChanges(gamesCollection).subscribe((games: any) => {
-        console.log('Games from Firestore:', games);
-      }); 
+  ngOnInit(): void {
+    const gamesCollection = collection(this.Firestore, 'games');
+    collectionData(gamesCollection).subscribe((game: any) => {
+      console.log('Games from Firestore:', game);
+    });
   }
 
   newGame() {
