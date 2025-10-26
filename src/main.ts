@@ -4,6 +4,9 @@
 
 // bootstrapApplication(App, appConfig)
 //   .catch((err) => console.error(err));
+
+
+import { appConfig } from './app/app.config';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { environment } from './environments/environment';
@@ -12,8 +15,17 @@ import { App } from './app/app';
 import 'zone.js';
 
 
+// bootstrapApplication(App, {
+//   providers: [
+//     provideFirebaseApp(() => initializeApp(environment.firebase)),
+//     provideFirestore(() => getFirestore())
+//   ]
+// });
+
 bootstrapApplication(App, {
+  ...appConfig,
   providers: [
+    ...(appConfig.providers ?? []),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
   ]

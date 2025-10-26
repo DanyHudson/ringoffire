@@ -5,7 +5,7 @@ import { Player } from '../player/player';
 import { AddButton } from '../add-button/add-button';
 import { GameInfo } from "../game-info/game-info";
 // import { FirestoreDataService } from "../firebase-services/firestore-data.service";
-import { collectionData, collection, Firestore } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection} from '@angular/fire/firestore';
 
 
 @Component({
@@ -22,27 +22,23 @@ export class Game {
   gameData: GameData = new GameData();
   addPlayerNote: string = '';
 
-  constructor(private cdr: ChangeDetectorRef, private Firestore: Firestore) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
+  constructor(private cdr: ChangeDetectorRef, private firestore: Firestore) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
     this.newGame();
   }
 
-  // ngOnInit(): void {
-  //   const gamesCollection = collection(this.firestoreDataService.firestore, 'games');
-  //   valueChanges(gamesCollection).subscribe((games: any) => {
-  //     console.log('Games from Firestore:', games);
-  //   });
-  // }
+ 
 
   ngOnInit(): void {
-    const gamesCollection = collection(this.Firestore, 'games');
-    collectionData(gamesCollection).subscribe((game: any) => {
-      console.log('Games from Firestore:', game);
+    console.log('Game component initialized');
+    const gamesCollection = collection(this.firestore, 'games');
+    collectionData(gamesCollection).subscribe((gameData: any) => {
+      console.log('Games from Firestore:', gameData);
     });
   }
 
   newGame() {
     this.gameData = new GameData();
-    console.log(this.gameData);
+    // console.log(this.gameData);
   }
 
   takeCard() {
@@ -53,8 +49,8 @@ export class Game {
     if (!this.pickCardAnimation) {
       this.currentCard = this.gameData.stack.pop() || '';
       this.pickCardAnimation = true;
-      console.log('new card: ' + this.currentCard);
-      console.log('game data is ', this.gameData);
+      // console.log('new card: ' + this.currentCard);
+      // console.log('game data is ', this.gameData);
 
       this.gameData.currentPlayer++;
       this.gameData.currentPlayer = this.gameData.currentPlayer % this.gameData.players.length;

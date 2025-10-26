@@ -17,7 +17,7 @@ export class StartScreen {
 
   newGame() {
     // start game
-    console.log('New Game started');
+    // console.log('New Game started');
     this.router.navigate(['/game']);
   }
 

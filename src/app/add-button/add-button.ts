@@ -22,8 +22,7 @@ export class AddButton {
     dialogRef.afterClosed().subscribe((name: string) => {
       if (name) {
         this.playerAdded.emit(name);
-        // Add the player name to your players array here
-        console.log('Player added:', name);
+        // console.log('Player added:', name);
       }
     });
   }
