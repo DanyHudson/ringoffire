@@ -65,8 +65,8 @@ export class Game implements OnDestroy{
    ngOnInit(): void {
     const gamesCollection = collection(this.firestore, 'games');
     const q = query(gamesCollection);
-    onSnapshot(q, (game: any) => {
-      console.log('Games from Firestore:', game);
+    onSnapshot(q, (gameData: any) => {
+      console.log('Games from Firestore:', gameData);
     });
 
   }
@@ -79,7 +79,7 @@ export class Game implements OnDestroy{
 
 
   newGame() {
-    this.gameData = new GameData();
+    this.gameData;
     // console.log(this.gameData);
   }
 
