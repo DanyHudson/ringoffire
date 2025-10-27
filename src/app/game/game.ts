@@ -4,10 +4,10 @@ import { GameData } from '../../../src/models/game-data';
 import { Player } from '../player/player';
 import { AddButton } from '../add-button/add-button';
 import { GameInfo } from "../game-info/game-info";
-import { Observable } from 'rxjs';
-import { Injectable, inject,OnDestroy } from '@angular/core';
+// import { Observable } from 'rxjs';
+import { Injectable, inject, OnDestroy } from '@angular/core';
 // import { FirestoreDataService } from "../firebase-services/firestore-data.service";
-import { Firestore, collectionData, collection, query } from '@angular/fire/firestore';
+import { Firestore, collection, query, onSnapshot } from '@angular/fire/firestore';
 
 
 
@@ -22,11 +22,14 @@ import { Firestore, collectionData, collection, query } from '@angular/fire/fire
 @Injectable({
   providedIn: 'root'
 })
-export class Game {
+export class Game implements OnDestroy{
   pickCardAnimation = false;
   currentCard: string | undefined = undefined;
   gameData: GameData = new GameData();
   addPlayerNote: string = '';
+
+  // unsubscribeGames: () => void;
+  unsubscribeGames: () => void = () => {};
 
   firestore = inject(Firestore);
 
@@ -35,9 +38,11 @@ export class Game {
   // }
 
   constructor(private cdr: ChangeDetectorRef) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
+    // this.unsubscribeGames = () => {};
     this.newGame();
   }
 
+  // first version
   // ngOnInit(): void {
   //   console.log('Game component initialized');
   //   const gamesCollection = collection(this.firestore, 'games');
@@ -46,14 +51,31 @@ export class Game {
   //   });
   // }
 
+// versuion with query
+  // ngOnInit(): void {
+  //   const gamesCollection = collection(this.firestore, 'games');
+  //   const gamesQuery = query(gamesCollection);
+  //   collectionData(gamesQuery).subscribe((gameData: any) => {
+  //     console.log('Games from Firestore:', gameData);
+  //   });
+  // }
 
-  ngOnInit(): void {
+
+  // version with onSnapshot
+   ngOnInit(): void {
     const gamesCollection = collection(this.firestore, 'games');
-    const gamesQuery = query(gamesCollection);
-    collectionData(gamesQuery).subscribe((gameData: any) => {
-      console.log('Games from Firestore:', gameData);
+    const q = query(gamesCollection);
+    onSnapshot(q, (game: any) => {
+      console.log('Games from Firestore:', game);
     });
+
   }
+
+  ngOnDestroy(): void {
+  if (this.unsubscribeGames) {
+    this.unsubscribeGames();
+  }
+}
 
 
   newGame() {
