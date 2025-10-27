@@ -4,8 +4,11 @@ import { GameData } from '../../../src/models/game-data';
 import { Player } from '../player/player';
 import { AddButton } from '../add-button/add-button';
 import { GameInfo } from "../game-info/game-info";
+import { Observable } from 'rxjs';
+import { Injectable, inject,OnDestroy } from '@angular/core';
 // import { FirestoreDataService } from "../firebase-services/firestore-data.service";
-import { Firestore, collectionData, collection} from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, query } from '@angular/fire/firestore';
+
 
 
 @Component({
@@ -16,25 +19,42 @@ import { Firestore, collectionData, collection} from '@angular/fire/firestore';
   styleUrl: './game.scss'
 })
 
+@Injectable({
+  providedIn: 'root'
+})
 export class Game {
   pickCardAnimation = false;
   currentCard: string | undefined = undefined;
   gameData: GameData = new GameData();
   addPlayerNote: string = '';
 
-  constructor(private cdr: ChangeDetectorRef, private firestore: Firestore) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
+  firestore = inject(Firestore);
+
+  // constructor(private cdr: ChangeDetectorRef, private firestore: Firestore) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
+  //   this.newGame();
+  // }
+
+  constructor(private cdr: ChangeDetectorRef) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
     this.newGame();
   }
 
- 
+  // ngOnInit(): void {
+  //   console.log('Game component initialized');
+  //   const gamesCollection = collection(this.firestore, 'games');
+  //   collectionData(gamesCollection).subscribe((gameData: any) => {
+  //     console.log('Games from Firestore:', gameData);
+  //   });
+  // }
+
 
   ngOnInit(): void {
-    console.log('Game component initialized');
     const gamesCollection = collection(this.firestore, 'games');
-    collectionData(gamesCollection).subscribe((gameData: any) => {
+    const gamesQuery = query(gamesCollection);
+    collectionData(gamesQuery).subscribe((gameData: any) => {
       console.log('Games from Firestore:', gameData);
     });
   }
+
 
   newGame() {
     this.gameData = new GameData();
