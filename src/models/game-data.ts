@@ -14,6 +14,16 @@ export class GameData {
 
         shuffleArray(this.stack);
     }
+
+public toJson() {
+    return {
+        players: this.players,
+        stack: this.stack,
+        playedCards: this.playedCards,
+        currentPlayer: this.currentPlayer
+    };
+}
+
 }
 
 function shuffleArray(array: any[]) {
@@ -27,3 +37,4 @@ function shuffleArray(array: any[]) {
     }
     return array;
 }
+

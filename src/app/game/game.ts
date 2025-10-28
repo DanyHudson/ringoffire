@@ -10,7 +10,6 @@ import { Injectable, inject, OnDestroy } from '@angular/core';
 import { Firestore, collection, collectionData, query, onSnapshot, doc, addDoc, updateDoc, deleteDoc } from '@angular/fire/firestore';
 
 
-
 @Component({
   selector: 'app-game',
   standalone: true,
@@ -22,11 +21,13 @@ import { Firestore, collection, collectionData, query, onSnapshot, doc, addDoc, 
 @Injectable({
   providedIn: 'root'
 })
+
 export class Game implements OnDestroy {
   pickCardAnimation = false;
   currentCard: string | undefined = undefined;
   gameData: GameData = new GameData();
   addPlayerNote: string = '';
+  gamesCollection: any;
 
   // unsubscribeGames: () => void;
   unsubscribeGames: () => void = () => { };
@@ -41,25 +42,34 @@ export class Game implements OnDestroy {
   constructor(private cdr: ChangeDetectorRef) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
     // this.unsubscribeGames = () => {};
     this.newGame();
+    this.gamesCollection = collection(this.firestore, 'games');
   }
-
 
   // version with onSnapshot
   ngOnInit(): void {
-    const gamesCollection = collection(this.firestore, 'games');
-    console.log('collection reference:', gamesCollection);
-    const q = query(gamesCollection);
-    const docRef = this.getSingleDocRef('games', 'yfvFL0P3chWQR0A20eqr');
-    onSnapshot(docRef, (snapshot) => {
-      console.log('Document data:', snapshot.data());
+    // const gamesCollection = collection(this.firestore, 'games');
+    // console.log('collection reference:', gamesCollection);
+    // // const q = query(gamesCollection);
+    // const docRef = this.getSingleDocRef('games', 'yfvFL0P3chWQR0A20eqr');
+    // onSnapshot(docRef, (snapshot) => {
+    //   console.log('Document data:', snapshot.data());
+    // });
+
+
+    this.gamesCollection = collection(this.firestore, 'games');
+    const docRef = this.gamesCollection;
+    onSnapshot(docRef, (snapshot: any) => {
+      snapshot.forEach((doc: any) => {
+        console.log('Document data:', doc.data());
+      });
     });
 
   }
 
-  getSingleDocRef(colId: string, docId: string) {
-    return doc(collection(this.firestore, colId), docId);
+  // getSingleDocRef(colId: string, docId: string) {
+  //   return doc(collection(this.firestore, colId), docId);
 
-  }
+  // }
 
   ngOnDestroy(): void {
     if (this.unsubscribeGames) {
@@ -67,15 +77,13 @@ export class Game implements OnDestroy {
     }
   }
 
-
   async newGame() {
     this.gameData;
     const gamesCollection = collection(this.firestore, 'games');
-    const newGameData = {'Hello': 'World'};
+    const newGameData = this.gameData.toJson();
+    // await addDoc(gamesCollection, newGameData);
     await addDoc(gamesCollection, newGameData);
   }
-
-
 
   takeCard() {
     if (this.gameData.players.length === 0) {
