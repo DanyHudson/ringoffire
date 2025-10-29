@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { Injectable, inject, OnDestroy } from '@angular/core';
 // import { FirestoreDataService } from "../firebase-services/firestore-data.service";
 import { Firestore, collection, collectionData, query, onSnapshot, doc, addDoc, updateDoc, deleteDoc } from '@angular/fire/firestore';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -35,7 +36,7 @@ export class Game implements OnDestroy {
   firestore = inject(Firestore);
   items$: Observable<any[]> = new Observable<any[]>();
 
-  constructor(private cdr: ChangeDetectorRef) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
+  constructor(private route: ActivatedRoute, private cdr: ChangeDetectorRef) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
     // this.unsubscribeGames = () => {};
     this.newGame();
     this.gamesCollection = collection(this.firestore, 'games');
@@ -43,21 +44,35 @@ export class Game implements OnDestroy {
 
   // version with onSnapshot
   ngOnInit(): void {
-    // const gamesCollection = collection(this.firestore, 'games');
-    // console.log('collection reference:', gamesCollection);
-    // // const q = query(gamesCollection);
-    // const docRef = this.getSingleDocRef('games', 'yfvFL0P3chWQR0A20eqr');
-    // onSnapshot(docRef, (snapshot) => {
-    //   console.log('Document data:', snapshot.data());
+    
+    // this.route.params.subscribe(params => {
+    //   console.log(params);
+    //   console.log(params['gameId']);
+      
+    //   this.gamesCollection = collection(this.firestore, 'games');
+    //   const docRef = this.gamesCollection;
+    //   onSnapshot(docRef, (snapshot: any) => {
+    //     snapshot.forEach((doc: any) => {
+    //       console.log('Document data:', doc.data());
+    //     });
+    //   });
+
+
     // });
 
-
-    this.gamesCollection = collection(this.firestore, 'games');
-    const docRef = this.gamesCollection;
-    onSnapshot(docRef, (snapshot: any) => {
-      snapshot.forEach((doc: any) => {
-        console.log('Document data:', doc.data());
+   this.route.params.subscribe(params => {
+      console.log(params);
+      console.log(params['gameId']);
+      
+      this.gamesCollection = collection(this.firestore, 'games');
+      const docRef = doc(this.gamesCollection, params['gameId']);
+      onSnapshot(docRef, (snapshot: any) => {
+        snapshot.forEach((doc: any) => {
+          console.log('Document data:', doc.data());
+        });
       });
+
+
     });
 
   }
@@ -75,9 +90,9 @@ export class Game implements OnDestroy {
 
   async newGame() {
     this.gameData;
-    const gamesCollection = collection(this.firestore, 'games');
-    const newGameData = this.gameData.toJson();
-    await addDoc(gamesCollection, newGameData);
+    // const gamesCollection = collection(this.firestore, 'games');
+    // const newGameData = this.gameData.toJson();
+    // await addDoc(gamesCollection, newGameData);
   }
 
   takeCard() {
