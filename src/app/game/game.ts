@@ -35,10 +35,6 @@ export class Game implements OnDestroy {
   firestore = inject(Firestore);
   items$: Observable<any[]> = new Observable<any[]>();
 
-  // constructor(private cdr: ChangeDetectorRef, private firestore: Firestore) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
-  //   this.newGame();
-  // }
-
   constructor(private cdr: ChangeDetectorRef) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
     // this.unsubscribeGames = () => {};
     this.newGame();
@@ -81,7 +77,6 @@ export class Game implements OnDestroy {
     this.gameData;
     const gamesCollection = collection(this.firestore, 'games');
     const newGameData = this.gameData.toJson();
-    // await addDoc(gamesCollection, newGameData);
     await addDoc(gamesCollection, newGameData);
   }
 
