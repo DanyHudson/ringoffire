@@ -67,11 +67,12 @@ export class Game implements OnDestroy {
       this.gamesCollection = collection(this.firestore, 'games');
       const docRef = doc(this.gamesCollection, params['gameId']);
       onSnapshot(docRef, (snapshot: any) => {
-        snapshot.forEach((doc: any) => {
-          console.log('Document data:', doc.data());
-        });
+          console.log('Document data:', snapshot.data());
+          this.gamesCollection.currentPlayer = this.gamesCollection.currentPlayer;
+          this.gamesCollection.playedCards = this.gamesCollection.playedCards;
+          this.gamesCollection.players= this.gamesCollection.players;
+          this.gamesCollection.stack = this.gamesCollection.stack;
       });
-
 
     });
 
