@@ -44,39 +44,29 @@ export class Game implements OnDestroy {
 
   // version with onSnapshot
   ngOnInit(): void {
-    
-    // this.route.params.subscribe(params => {
-    //   console.log(params);
-    //   console.log(params['gameId']);
-      
-    //   this.gamesCollection = collection(this.firestore, 'games');
-    //   const docRef = this.gamesCollection;
-    //   onSnapshot(docRef, (snapshot: any) => {
-    //     snapshot.forEach((doc: any) => {
-    //       console.log('Document data:', doc.data());
-    //     });
-    //   });
-
-
-    // });
-
-   this.route.params.subscribe(params => {
+    this.route.params.subscribe(params => {
       console.log(params);
       console.log(params['gameId']);
-      
+
       this.gamesCollection = collection(this.firestore, 'games');
       const docRef = doc(this.gamesCollection, params['gameId']);
       onSnapshot(docRef, (snapshot: any) => {
-          console.log('Document data:', snapshot.data());
-          this.gamesCollection.currentPlayer = this.gamesCollection.currentPlayer;
-          this.gamesCollection.playedCards = this.gamesCollection.playedCards;
-          this.gamesCollection.players= this.gamesCollection.players;
-          this.gamesCollection.stack = this.gamesCollection.stack;
+        console.log('Document data:', snapshot.data());
+
+        const data = snapshot.data();
+        this.gameData.players = data.players;
+        this.gameData.stack = data.stack;
+        this.gameData.playedCards = data.playedCards;
+        this.gameData.currentPlayer = data.currentPlayer;
+        this.cdr.detectChanges();
+
       });
 
     });
 
   }
+
+
 
   // getSingleDocRef(colId: string, docId: string) {
   //   return doc(collection(this.firestore, colId), docId);
