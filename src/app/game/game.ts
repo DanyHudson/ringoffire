@@ -29,27 +29,27 @@ export class Game implements OnDestroy {
   gameData: GameData = new GameData();
   addPlayerNote: string = '';
   gamesCollection: any;
+  gameId: string = '';
 
-  // unsubscribeGames: () => void;
   unsubscribeGames: () => void = () => { };
 
   firestore = inject(Firestore);
   items$: Observable<any[]> = new Observable<any[]>();
 
   constructor(private route: ActivatedRoute, private cdr: ChangeDetectorRef) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
-    // this.unsubscribeGames = () => {};
     this.newGame();
     this.gamesCollection = collection(this.firestore, 'games');
   }
 
-  // version with onSnapshot
+
   ngOnInit(): void {
     this.route.params.subscribe(params => {
+      this.gameId = params['gameId'];
       console.log(params);
-      console.log(params['gameId']);
+      console.log(this.gameId);
 
       this.gamesCollection = collection(this.firestore, 'games');
-      const docRef = doc(this.gamesCollection, params['gameId']);
+      const docRef = doc(this.gamesCollection, this.gameId);
       onSnapshot(docRef, (snapshot: any) => {
         console.log('Document data:', snapshot.data());
 
@@ -66,13 +66,6 @@ export class Game implements OnDestroy {
 
   }
 
-
-
-  // getSingleDocRef(colId: string, docId: string) {
-  //   return doc(collection(this.firestore, colId), docId);
-
-  // }
-
   ngOnDestroy(): void {
     if (this.unsubscribeGames) {
       this.unsubscribeGames();
@@ -81,9 +74,6 @@ export class Game implements OnDestroy {
 
   async newGame() {
     this.gameData;
-    // const gamesCollection = collection(this.firestore, 'games');
-    // const newGameData = this.gameData.toJson();
-    // await addDoc(gamesCollection, newGameData);
   }
 
   takeCard() {
@@ -112,5 +102,17 @@ export class Game implements OnDestroy {
   addPlayer(name: string) {
     this.gameData.players.push(name);
   }
+
+  saveGame() {
+    this.gamesCollection = collection(this.firestore, 'games');
+    const docRef = doc(this.gamesCollection, this.gameId);
+
+    updateDoc(docRef, this.gameData.toJson());
+
+
+  }
+
+
+
 
 }
