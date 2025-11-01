@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'add-player-dialog',
   standalone: true,
   imports: [
-    MatDialogModule,      // <-- Add this for dialog directives like mat-dialog-content
+    MatDialogModule, 
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
