@@ -24,8 +24,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class Game implements OnDestroy {
-  pickCardAnimation = false;
-  currentCard: string | undefined = undefined;
   gameData: GameData = new GameData();
   addPlayerNote: string = '';
   gamesCollection: any;
@@ -56,6 +54,8 @@ export class Game implements OnDestroy {
         this.gameData.stack = data.stack;
         this.gameData.playedCards = data.playedCards;
         this.gameData.currentPlayer = data.currentPlayer;
+        this.gameData.pickCardAnimation = data.pickCardAnimation;
+        this.gameData.currentCard = data.currentCard;
         this.cdr.detectChanges();
       });
     });
@@ -76,16 +76,16 @@ export class Game implements OnDestroy {
       this.addPlayerNote = 'Please add players before starting the game!';
       return;
     }
-    if (!this.pickCardAnimation) {
-      this.currentCard = this.gameData.stack.pop() || '';
-      this.pickCardAnimation = true;
+    if (!this.gameData.pickCardAnimation) {
+      this.gameData.currentCard = this.gameData.stack.pop() || '';
+      this.gameData.pickCardAnimation = true;
       this.saveGame();
 
       this.gameData.currentPlayer++;
       this.gameData.currentPlayer = this.gameData.currentPlayer % this.gameData.players.length;
       setTimeout(() => {
-        this.gameData.playedCards.push(this.currentCard as string);
-        this.pickCardAnimation = false;
+        this.gameData.playedCards.push(this.gameData.currentCard as string);
+        this.gameData.pickCardAnimation = false;
         this.saveGame();
         this.cdr.detectChanges();
       }, 1000);
