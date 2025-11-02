@@ -79,11 +79,14 @@ export class Game implements OnDestroy {
     if (!this.pickCardAnimation) {
       this.currentCard = this.gameData.stack.pop() || '';
       this.pickCardAnimation = true;
+      this.saveGame();
+
       this.gameData.currentPlayer++;
       this.gameData.currentPlayer = this.gameData.currentPlayer % this.gameData.players.length;
       setTimeout(() => {
         this.gameData.playedCards.push(this.currentCard as string);
         this.pickCardAnimation = false;
+        this.saveGame();
         this.cdr.detectChanges();
       }, 1000);
     }
