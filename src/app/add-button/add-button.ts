@@ -18,11 +18,9 @@ export class AddButton {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddPlayerDialog);
-
     dialogRef.afterClosed().subscribe((name: string) => {
-      if (name) {
+      if (name && name.trim().length > 0) {
         this.playerAdded.emit(name);
-        // console.log('Player added:', name);
       }
     });
   }

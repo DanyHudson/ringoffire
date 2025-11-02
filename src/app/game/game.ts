@@ -41,7 +41,6 @@ export class Game implements OnDestroy {
     this.gamesCollection = collection(this.firestore, 'games');
   }
 
-
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.gameId = params['gameId'];
@@ -52,18 +51,14 @@ export class Game implements OnDestroy {
       const docRef = doc(this.gamesCollection, this.gameId);
       onSnapshot(docRef, (snapshot: any) => {
         console.log('Document data:', snapshot.data());
-
         const data = snapshot.data();
         this.gameData.players = data.players;
         this.gameData.stack = data.stack;
         this.gameData.playedCards = data.playedCards;
         this.gameData.currentPlayer = data.currentPlayer;
         this.cdr.detectChanges();
-
       });
-
     });
-
   }
 
   ngOnDestroy(): void {
@@ -84,9 +79,6 @@ export class Game implements OnDestroy {
     if (!this.pickCardAnimation) {
       this.currentCard = this.gameData.stack.pop() || '';
       this.pickCardAnimation = true;
-      // console.log('new card: ' + this.currentCard);
-      // console.log('game data is ', this.gameData);
-
       this.gameData.currentPlayer++;
       this.gameData.currentPlayer = this.gameData.currentPlayer % this.gameData.players.length;
       setTimeout(() => {
@@ -94,25 +86,27 @@ export class Game implements OnDestroy {
         this.pickCardAnimation = false;
         this.cdr.detectChanges();
       }, 1000);
-
     }
     this.addPlayerNote = '';
   }
 
   addPlayer(name: string) {
     this.gameData.players.push(name);
+    // this.saveGame();  // calling this here would also be fine
   }
 
   saveGame() {
     this.gamesCollection = collection(this.firestore, 'games');
     const docRef = doc(this.gamesCollection, this.gameId);
+     console.log('save game data check', this.gameData.toJson())
 
     updateDoc(docRef, this.gameData.toJson());
-
-
   }
 
-
+  onPlayerAdded(name: string) { // more elegant way to handle the event also more according to Angular naming conventions
+    this.addPlayer(name);
+    this.saveGame();
+  }
 
 
 }
