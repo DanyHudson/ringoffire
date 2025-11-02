@@ -54,8 +54,8 @@ export class Game implements OnDestroy {
         this.gameData.stack = data.stack;
         this.gameData.playedCards = data.playedCards;
         this.gameData.currentPlayer = data.currentPlayer;
-        this.gameData.pickCardAnimation = data.pickCardAnimation;
-        this.gameData.currentCard = data.currentCard;
+        // this.gameData.pickCardAnimation = data.pickCardAnimation;
+        // this.gameData.currentCard = data.currentCard;
         this.cdr.detectChanges();
       });
     });
