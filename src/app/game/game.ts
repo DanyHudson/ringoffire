@@ -54,8 +54,8 @@ export class Game implements OnDestroy {
         this.gameData.stack = data.stack;
         this.gameData.playedCards = data.playedCards;
         this.gameData.currentPlayer = data.currentPlayer;
-        // this.gameData.pickCardAnimation = data.pickCardAnimation;
-        // this.gameData.currentCard = data.currentCard;
+        this.gameData.pickCardAnimation = data.pickCardAnimation;
+        this.gameData.currentCard = data.currentCard;
         this.cdr.detectChanges();
       });
     });
@@ -79,10 +79,10 @@ export class Game implements OnDestroy {
     if (!this.gameData.pickCardAnimation) {
       this.gameData.currentCard = this.gameData.stack.pop() || '';
       this.gameData.pickCardAnimation = true;
-      this.saveGame();
-
       this.gameData.currentPlayer++;
       this.gameData.currentPlayer = this.gameData.currentPlayer % this.gameData.players.length;
+      this.saveGame();
+      
       setTimeout(() => {
         this.gameData.playedCards.push(this.gameData.currentCard as string);
         this.gameData.pickCardAnimation = false;
