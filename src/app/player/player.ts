@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,5 +12,10 @@ export class Player {
 
   @Input() name: string = '';
   @Input() playerActive: boolean = false;
+  @Output() delete = new EventEmitter<void>();
+
+  onDeletePlayer() {
+    this.delete.emit();
+  }
   
 }

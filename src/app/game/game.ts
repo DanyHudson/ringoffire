@@ -82,7 +82,7 @@ export class Game implements OnDestroy {
       this.gameData.currentPlayer++;
       this.gameData.currentPlayer = this.gameData.currentPlayer % this.gameData.players.length;
       this.saveGame();
-      
+
       setTimeout(() => {
         this.gameData.playedCards.push(this.gameData.currentCard as string);
         this.gameData.pickCardAnimation = false;
@@ -101,7 +101,7 @@ export class Game implements OnDestroy {
   saveGame() {
     this.gamesCollection = collection(this.firestore, 'games');
     const docRef = doc(this.gamesCollection, this.gameId);
-     console.log('save game data check', this.gameData.toJson())
+    console.log('save game data check', this.gameData.toJson())
 
     updateDoc(docRef, this.gameData.toJson());
   }
@@ -116,10 +116,10 @@ export class Game implements OnDestroy {
     this.saveGame();
   }
 
-startNewGame() {
+  startNewGame() {
     this.gameData = new GameData();
     this.saveGame();
-}
+  }
 
 
 }
