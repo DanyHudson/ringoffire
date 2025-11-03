@@ -27,7 +27,7 @@ export class GameInfo implements OnInit, OnChanges {
 
   title = '';
   description = '';
-  @Input() activeCard: string | undefined = '';
+  @Input() activeCard: string | null = null;
   @Input() addPlayerNote: string = '';
 
   constructor() {
@@ -40,7 +40,8 @@ export class GameInfo implements OnInit, OnChanges {
     if (this.activeCard) {
       // console.log('Current card is:', this.activeCard);
       // console.log('Current number is:', +(this.activeCard || '').split('_')[1]);
-      let cardNumber = +(this.activeCard || '').split('_')[1];
+      // let cardNumber = +(this.activeCard || '').split('_')[1];
+      let cardNumber = +(this.activeCard).split('_')[1];
       this.title = this.cardAction[cardNumber - 1].title;
       this.description = this.cardAction[cardNumber - 1].description;
     }
