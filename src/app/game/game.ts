@@ -111,5 +111,15 @@ export class Game implements OnDestroy {
     this.saveGame();
   }
 
+  deletePlayer(index: number) {
+    this.gameData.players.splice(index, 1);
+    this.saveGame();
+  }
+
+startNewGame() {
+    this.gameData = new GameData();
+    this.saveGame();
+}
+
 
 }

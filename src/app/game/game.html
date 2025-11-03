@@ -1,9 +1,11 @@
-@for (player of gameData.players; track player; let i = $index;) {
-<app-player [style.top.px]="90 + i * 122" class="player-position" [playerActive]="i == gameData.currentPlayer"
-    [name]="player">
-</app-player>
-
-}
+<div class="playersContainer">
+    @for (player of gameData.players; track player; let i = $index;) {
+    <app-player [style.top.px]="40 + i * 122" class="player-position" [playerActive]="i == gameData.currentPlayer"
+        [name]="player">
+        <button class="delete-player-btn" (click)="deletePlayer(i)">&#10005;</button>
+    </app-player>
+    }
+</div>
 
 <div class="field">
 
@@ -23,7 +25,8 @@
 
         <!-- current card animated -->
         @if (gameData.pickCardAnimation && gameData.currentCard) {
-        <img class="pick-card" style="right: 32px;" [src]="'assets/img/cards_old/' + gameData.currentCard + '.png'" alt="">
+        <img class="pick-card" style="right: 32px;" [src]="'assets/img/cards_old/' + gameData.currentCard + '.png'"
+            alt="">
 
         }
 
