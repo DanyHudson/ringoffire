@@ -3,12 +3,11 @@
     <app-player [style.top.px]="40 + i * 122" class="player-position" [playerActive]="i == gameData.currentPlayer"
         [name]="player" (delete)="deletePlayer(i)">
     </app-player>
-    <!-- <button class="delete-player-btn" (click)="deletePlayer(i)">&#10005;</button> -->
     }
 </div>
 
 <div class="field">
-    <div> <button (click)="startNewGame()">start new game</button></div>
+    <!-- <div> <button (click)="startNewGame()">start new game</button></div> -->
 
     <div class="card-stack">
         <!-- card stack -->

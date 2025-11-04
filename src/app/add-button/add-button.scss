@@ -12,6 +12,10 @@
     border-radius: 50%;
     border: none;
 
+     @media (max-width: 720px) {
+        bottom: 160px;
+    }
+
     img {
         width: 64px;
         height: 64px;

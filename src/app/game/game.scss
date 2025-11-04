@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}    
+}
 
 .card-stack {
     position: relative;
@@ -54,6 +54,7 @@
         transform: scale(1) translateX(140px) translateY(-224px) rotate(27deg);
     }
 }
+
 .playersContainer {
     // background-color: aqua;
     height: 86vh;
@@ -79,26 +80,26 @@
 .player-position {
     position: absolute;
     right: 0;
-    width: 280px;
-    max-width: 280px;
+    width: 260px;
+    max-width: 260px;
     z-index: 1;
 }
 
-.delete-player-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: red;
-    border: none;
-    color: white;
-    font-size: 16px;
-    width: 24px;
-    height: 24px;
-    border-radius: 12px;
-    cursor: pointer;
-    padding: 0;
-    line-height: 20px;
-}
+// .delete-player-btn {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     background-color: red;
+//     border: none;
+//     color: white;
+//     font-size: 16px;
+//     width: 24px;
+//     height: 24px;
+//     border-radius: 12px;
+//     cursor: pointer;
+//     padding: 0;
+//     line-height: 20px;
+// }
 
 .pin-bottom {
     position: absolute;
@@ -107,4 +108,10 @@
     right: 132px;
     padding: 16px;
     border-radius: 0px !important;
+
+    @media (max-width: 720px) {
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
 }

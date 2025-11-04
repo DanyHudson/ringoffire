@@ -1,5 +1,4 @@
 .start-screen {
-    // background-color: #404040;
     background-color: black;
     width: 100vw;
     height: 100vh;
@@ -10,10 +9,22 @@
     flex-direction: column;
     // object-fit: cover;
 
+    @media (max-width: 960px) {
+        overflow: hidden;
+    }
+
     >img {
         width: 80%;
         height: auto;
         object-fit: cover;
+
+        @media (max-width: 960px) {
+            width: 600px;
+        }
+
+        @media (max-width: 520px) {
+            width: 400px;
+        }
     }
 
 }
@@ -36,6 +47,10 @@
     >img {
         width: 32vw;
         height: auto;
+
+        @media (max-width: 960px) {
+            width: 240px;
+        }
 
         &:hover {
             filter: brightness(1.75);
