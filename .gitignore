@@ -41,3 +41,8 @@ testem.log
 .DS_Store
 Thumbs.db
 single_playing_card_vector.ai
+src/app/palyer-mobile/palyer-mobile.html
+src/app/palyer-mobile/palyer-mobile.html
+src/app/palyer-mobile/palyer-mobile.html
+src/app/palyer-mobile/palyer-mobile.ts
+src/app/palyer-mobile/palyer-mobile.spec.ts

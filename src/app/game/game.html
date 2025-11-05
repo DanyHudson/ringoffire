@@ -7,9 +7,9 @@
 </div>
 <div class="players-mobile-container">
     @for (player of gameData.players; track player; let i = $index;) {
-    <app-palyer-mobile [style.left.px]="40 + i * 122" [style.top.px]="0"    class="player-position hide-desktop"
+    <app-player-mobile [style.left.px]="40 + i * 122" [style.top.px]="0" class="player-position hide-desktop"
         [playerActive]="i == gameData.currentPlayer" [name]="player" (delete)="deletePlayer(i)">
-    </app-palyer-mobile>
+    </app-player-mobile>
     }
 </div>
 

@@ -1,0 +1,46 @@
+.player-mobile {
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 12px;
+    border-bottom-right-radius: 56px;
+    border-bottom-left-radius: 56px; 
+    
+
+    span {
+        font-size: 32px;
+        margin-left: 16px;
+        color: white;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    img {
+        width: 56px;
+        height: 56px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
+}
+
+.player-mobile-active {
+    border: 3px solid orange;
+
+}
+
+
+.delete-player-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    padding-bottom: 2px;
+    line-height: 20px;
+    font-size: 2em;
+    // font-weight: bold;
+}

@@ -2,7 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameData } from '../../../src/models/game-data';
 import { Player } from '../player/player';
-import { PalyerMobile } from '../palyer-mobile/palyer-mobile';
+import { PlayerMobile } from '../player-mobile/player-mobile';
 import { AddButton } from '../add-button/add-button';
 import { GameInfo } from "../game-info/game-info";
 import { Observable } from 'rxjs';
@@ -15,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [CommonModule, Player, PalyerMobile, AddButton, GameInfo],
+  imports: [CommonModule, Player, PlayerMobile, AddButton, GameInfo],
   templateUrl: './game.html',
   styleUrl: './game.scss'
 })
