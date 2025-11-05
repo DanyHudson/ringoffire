@@ -1,6 +1,6 @@
 <div class="playersContainer">
     @for (player of gameData.players; track player; let i = $index;) {
-    <app-player [style.top.px]="40 + i * 122" class="player-position" [playerActive]="i == gameData.currentPlayer"
+    <app-player [style.top.px]="40 + i * 122" class="player-position hide-mobile" [playerActive]="i == gameData.currentPlayer"
         [name]="player" (delete)="deletePlayer(i)">
     </app-player>
     }
