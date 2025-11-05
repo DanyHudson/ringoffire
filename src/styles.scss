@@ -1,5 +1,4 @@
-
- //Include theming for Angular Material with `mat.theme()`.
+//Include theming for Angular Material with `mat.theme()`.
 // This Sass mixin will define CSS variables that are used for styling Angular Material
 // components according to the Material 3 design spec.
 // Learn more about theming and how to use it for your application's
@@ -7,14 +6,12 @@
 @use '@angular/material' as mat;
 
 html {
-  @include mat.theme((
-    color: (
-      primary: mat.$rose-palette,
-      tertiary: mat.$red-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
+  @include mat.theme((color: (primary: mat.$rose-palette,
+        tertiary: mat.$red-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    ));
 }
 
 body {
@@ -35,13 +32,13 @@ body {
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 // @mixin dFlex($jc: center, $ai: center, $fd: column) {
@@ -50,8 +47,15 @@ html {
 //     align-items: $ai;
 //     flex-direction: $fd;
 // }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 // ::ng-deep .mat-mdc-dialog-panel {
 //   border-radius: 0 !important;
@@ -67,7 +71,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 // }
 
 :root {
-  @include mat.dialog-overrides((
-    container-shape: 8px,
-  ));
+  @include mat.dialog-overrides((container-shape: 8px,
+    ));
+}
+
+
+@media (max-width: 720px) {
+  .hide-mobile  {
+    display: none;
+  }
+}
+@media (min-width: 720px) {
+  .hide-desktop {
+    display: none;
+  }
 }
