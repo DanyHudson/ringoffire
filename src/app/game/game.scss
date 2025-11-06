@@ -111,6 +111,11 @@
     overflow-x: auto;
     overflow-y: hidden;
     margin-bottom: 8px;
+
+    @media (min-width: 720px) {
+        display: none;
+    }
+
 }
 
 .pin-bottom {
