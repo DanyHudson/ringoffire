@@ -2,7 +2,6 @@
     width: 100vw;
     height: 100vh;
     max-width: 100%;
-    // background-image: url('/angular-projects/ringoffire/assets/img/board.jpg');
     background-image: url('/assets/img/board.jpg');
     display: flex;
     justify-content: center;
@@ -56,23 +55,32 @@
 }
 
 .players-container {
-    // background-color: aqua;
     height: 86vh;
     width: 50vw;
     position: absolute;
     right: 0;
     overflow-y: auto;
+
+    @media (max-width: 720px) {
+        display: none;
+    }
 }
 
 .playersContainer::-webkit-scrollbar {
     width: 6px;
 }
 
-.playersContainer::-webkit-scrollbar-track {
+.players-mobile-container::-webkit-scrollbar {
+    height: 6px;
+}
+
+.playersContainer::-webkit-scrollbar-track,
+.players-mobile-container::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.playersContainer::-webkit-scrollbar-thumb {
+.playersContainer::-webkit-scrollbar-thumb,
+.players-mobile-container::-webkit-scrollbar-thumb {
     background-color: orange;
     border-radius: 4px;
 }
@@ -85,19 +93,25 @@
     z-index: 1;
 }
 
+.player-mobile-position {
+    position: absolute;
+    width: 90px;
+    max-width: 90px;
+    z-index: 1;
+}
+
 .players-mobile-container {
-    background-color: cornflowerblue;
+    background-color: rgba(255, 255, 255, 0.5);
     display: flex;
-    height: 120px;
+    height: 132px;
     width: 100vw;
     position: absolute;
     right: 0;
     left: 0;
     overflow-x: auto;
     overflow-y: hidden;
+    margin-bottom: 8px;
 }
-
-
 
 .pin-bottom {
     position: absolute;

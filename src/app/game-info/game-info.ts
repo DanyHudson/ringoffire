@@ -8,6 +8,7 @@ import { MatCardModule } from '@angular/material/card';
   templateUrl: './game-info.html',
   styleUrl: './game-info.scss'
 })
+
 export class GameInfo implements OnInit, OnChanges {
   cardAction = [
     { title: 'Waterfall', description: 'Everyone has to start drinking at the same time. As soon as player 1 stops drinking, player 2 may stop drinking. Player 3 may stop as soon as player 2 stops drinking, and so on.' },
@@ -38,9 +39,6 @@ export class GameInfo implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     if (this.activeCard) {
-      // console.log('Current card is:', this.activeCard);
-      // console.log('Current number is:', +(this.activeCard || '').split('_')[1]);
-      // let cardNumber = +(this.activeCard || '').split('_')[1];
       let cardNumber = +(this.activeCard).split('_')[1];
       this.title = this.cardAction[cardNumber - 1].title;
       this.description = this.cardAction[cardNumber - 1].description;

@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { SlicePipe } from '@angular/common';
 
 @Component({
   selector: 'app-player-mobile',
-  imports: [],
+  imports: [SlicePipe],
   templateUrl: './player-mobile.html',
   styleUrl: './player-mobile.scss',
 })
@@ -12,7 +13,6 @@ export class PlayerMobile {
   @Output() delete = new EventEmitter<void>();
 
   constructor() { }
-
 
   ngOnInit(): void { };
 

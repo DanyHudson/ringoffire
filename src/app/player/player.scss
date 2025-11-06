@@ -4,8 +4,7 @@
     background-color: rgba(0, 0, 0, 0.7);
     padding: 12px;
     border-top-left-radius: 56px;
-    border-bottom-left-radius: 56px; 
-    
+    border-bottom-left-radius: 56px;
 
     span {
         font-size: 32px;
@@ -24,9 +23,7 @@
 
 .player-active {
     border: 3px solid orange;
-
 }
-
 
 .delete-player-btn {
     position: absolute;
@@ -43,5 +40,4 @@
     padding-bottom: 2px;
     line-height: 20px;
     font-size: 2em;
-    // font-weight: bold;
 }
