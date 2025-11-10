@@ -1,18 +1,17 @@
 <div class="players-container">
     @for (player of gameData.players; track player; let i = $index;) {
-    <app-player [style.top.px]="40 + i * 122" class="player-position "
-        [playerActive]="i == gameData.currentPlayer" [name]="player" (delete)="deletePlayer(i)">
+    <app-player [style.top.px]="40 + i * 122" class="player-position"
+        [playerActive]="i == gameData.currentPlayer" [name]="player" (click)="editPlayer(i)">
     </app-player>
     }
 </div>
 <div class="players-mobile-container">
     @for (player of gameData.players; track player; let i = $index;) {
     <app-player-mobile [style.left.px]="10 + i * 120" [style.top.px]="0" class="player-mobile-position "
-        [playerActive]="i == gameData.currentPlayer" [name]="player" (delete)="deletePlayer(i)">
+        [playerActive]="i == gameData.currentPlayer" [name]="player" (click)="editPlayer(i)">
     </app-player-mobile>
     }
 </div>
-
 
 <div class="field">
     <!-- <div> <button (click)="startNewGame()">start new game</button></div> -->
