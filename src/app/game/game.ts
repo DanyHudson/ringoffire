@@ -10,6 +10,8 @@ import { Injectable, inject, OnDestroy } from '@angular/core';
 // import { FirestoreDataService } from "../firebase-services/firestore-data.service";
 import { Firestore, collection, collectionData, query, onSnapshot, doc, addDoc, updateDoc, deleteDoc } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { EditPlayerDialog } from '../edit-player-dialog/edit-player-dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -111,6 +113,15 @@ export class Game implements OnDestroy {
     this.addPlayer(name);
     this.saveGame();
   }
+
+  editPlayer(playerId: number) {
+    console.log('edit player', playerId);
+
+  }
+
+   openDialog(): void {
+      const dialogRef = this.dialog.open(EditPlayerDialog);
+    }
 
   deletePlayer(index: number) {
     this.gameData.players.splice(index, 1);
