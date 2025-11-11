@@ -56,10 +56,11 @@
 
 .players-container {
     height: 86vh;
-    width: 50vw;
+    width: 38vw;
     position: absolute;
     right: 0;
     overflow-y: auto;
+    overflow-x: hidden;
 
     @media (max-width: 720px) {
         display: none;
