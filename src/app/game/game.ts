@@ -115,14 +115,15 @@ export class Game implements OnDestroy {
   }
 
   editPlayer(playerId: number) {
-    console.log('edit player', playerId);
-    this.openDialog();
-
+    const playerName = this.gameData.players[playerId];
+    this.openDialog(playerName);
   }
 
-   openDialog(): void {
-      const dialogRef = this.dialog.open(EditPlayerDialog);
-    }
+  openDialog(playerName: string): void {
+    this.dialog.open(EditPlayerDialog, {
+      data: { name: playerName }
+    });
+  }
 
   deletePlayer(index: number) {
     this.gameData.players.splice(index, 1);

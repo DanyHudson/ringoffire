@@ -1,6 +1,6 @@
 import { Component,Output,EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+// import { MatDialogModule } from '@angular/material/dialog';
 import { MatFabButton } from '@angular/material/button';
 import { AddPlayerDialog } from '../add-player-dialog/add-player-dialog';
 

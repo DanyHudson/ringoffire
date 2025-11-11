@@ -1,10 +1,10 @@
 <div class="mat-dialog-container">
-    <h2 mat-dialog-title>Profile  {{ name }}</h2>
+    <h2 mat-dialog-title>Profile  {{ data.name }}</h2>
     <mat-dialog-content>
-       
+       images for profile pics to be added here
     </mat-dialog-content>
     <mat-dialog-actions>
-        <button mat-button (click)="closeDialog()">Cancel</button>
-        <button mat-button (click)="acceptChanges()" [disabled]="!name">Add</button>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <!-- <button mat-button (click)="saveGame()">Add</button> -->
     </mat-dialog-actions>
-</div>
+</div> 
