@@ -1,0 +1,30 @@
+.profile-pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    padding: 4px;
+    object-fit: cover;
+    border-radius: 100%;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.1);
+        transition: all 0.3s ease-in-out;
+    }
+}
+
+mat-dialog-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 92%;
+    gap: 12px;
+    height: auto;
+    overflow: hidden;
+    // border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.7);
+}   

@@ -1,7 +1,9 @@
 <div class="mat-dialog-container">
     <h2 mat-dialog-title>Profile  {{ data.name }}</h2>
     <mat-dialog-content>
-       images for profile pics to be added here
+        @for (pic of allProfilePics; track pic; let i = $index;) {
+        <img src="./assets/img/profile/{{ pic }}" alt=""  class="profile-pic">
+        }
     </mat-dialog-content>
     <mat-dialog-actions>
         <button mat-button (click)="onNoClick()">Cancel</button>

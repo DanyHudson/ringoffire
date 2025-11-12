@@ -116,14 +116,27 @@ export class Game implements OnDestroy {
 
   editPlayer(playerId: number) {
     const playerName = this.gameData.players[playerId];
+    // const dialogRef = this.dialog.open(EditPlayerDialog);
     this.openDialog(playerName);
+
+
+
+    // dialogRef.afterClosed().subscribe((change: string) => {
+    //   console.log('received changes', change);
+
+    // });
+
   }
 
   openDialog(playerName: string): void {
     this.dialog.open(EditPlayerDialog, {
       data: { name: playerName }
+
+    }).afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
+
 
   deletePlayer(index: number) {
     this.gameData.players.splice(index, 1);
