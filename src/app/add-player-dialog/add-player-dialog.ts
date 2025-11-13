@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { EditPlayerDialog } from '../edit-player-dialog/edit-player-dialog';
 
 @Component({
   selector: 'add-player-dialog',
@@ -13,7 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    CommonModule,
+    EditPlayerDialog
   ],
   templateUrl: './add-player-dialog.html',
   styleUrl: './add-player-dialog.scss'

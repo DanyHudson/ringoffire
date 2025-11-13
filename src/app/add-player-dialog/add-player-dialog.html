@@ -6,8 +6,10 @@
         </mat-form-field>
 
         <div>
-<img src="./assets/img/profile/1fe.png" alt="">
-
+            <!-- <img src="./assets/img/profile/1fe.png" alt=""> -->
+            @for (pic of allProfilePics; track pic; let i = $index;) {
+            <img src="./assets/img/profile/{{ pic }}" alt="" class="profile-pic">
+            }
         </div>
 
     </mat-dialog-content>

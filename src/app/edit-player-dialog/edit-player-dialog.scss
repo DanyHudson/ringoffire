@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     padding: 4px;
     object-fit: cover;
     border-radius: 100%;
@@ -20,11 +20,26 @@ mat-dialog-content {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    width: 92%;
+    width: 100%;
     gap: 12px;
     height: auto;
     overflow: hidden;
     // border: 1px solid #ccc;
     border-radius: 8px;
     background-color: rgba(0, 0, 0, 0.7);
-}   
+    position: relative;
+}
+
+mat-dialog-container {
+    width: 400px;
+    height: auto;
+    // background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 8px !important;
+    display: flex !important;
+    justify-content: center !important;
+    /* width: 90%; */
+    // flex-direction: column;
+    align-items: center;
+
+
+}
