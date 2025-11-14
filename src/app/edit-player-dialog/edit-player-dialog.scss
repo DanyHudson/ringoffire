@@ -43,3 +43,13 @@ mat-dialog-container {
 
 
 }
+
+.profile-pictures {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 12px;
+    margin-top: 12px;
+}

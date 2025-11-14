@@ -5,8 +5,7 @@
             <input matInput [(ngModel)]="name" placeholder="Player name, max 7 char">
         </mat-form-field>
 
-        <div>
-            <!-- <img src="./assets/img/profile/1fe.png" alt=""> -->
+        <div class="profile-pictures">
             @for (pic of allProfilePics; track pic; let i = $index;) {
             <img src="./assets/img/profile/{{ pic }}" alt="" class="profile-pic">
             }
@@ -21,5 +20,5 @@
 
 <div>
 
-    
+
 </div>
