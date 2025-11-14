@@ -5,30 +5,29 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { EditPlayerDialog } from '../edit-player-dialog/edit-player-dialog';
+import { ALL_PROFILE_PICS } from '../../../src/models/profile-pics';
 
 @Component({
   selector: 'add-player-dialog',
   standalone: true,
   imports: [
-    MatDialogModule, 
+    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
     MatButtonModule,
     CommonModule,
-    EditPlayerDialog
   ],
   templateUrl: './add-player-dialog.html',
   styleUrl: './add-player-dialog.scss'
 })
 export class AddPlayerDialog {
   name: string = '';
-
+  allProfilePics = ALL_PROFILE_PICS;
   constructor(
     public dialogRef: MatDialogRef<AddPlayerDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+  ) { }
 
   onNoClick(): void {
     this.dialogRef.close();
