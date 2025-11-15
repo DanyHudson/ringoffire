@@ -64,3 +64,22 @@ button[mat-button][disabled] {
         transition: all 0.3s ease-in-out;
     }
 }
+
+mat-dialog-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: auto;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: relative;
+}
+
+.current-profile-pic {
+  filter: brightness(1.2);
+  border: #e0e0e0 2px solid;
+}

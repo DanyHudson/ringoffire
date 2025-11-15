@@ -24,6 +24,7 @@ import { ALL_PROFILE_PICS } from '../../../src/models/profile-pics';
 export class AddPlayerDialog {
   name: string = '';
   allProfilePics = ALL_PROFILE_PICS;
+  currentProfilePic: string = this.allProfilePics[0];
   constructor(
     public dialogRef: MatDialogRef<AddPlayerDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -33,7 +34,16 @@ export class AddPlayerDialog {
     this.dialogRef.close();
   }
 
-  addPlayer(): void {
-    this.dialogRef.close(this.name);
+  selectProfilePic(pic: string): void {
+    this.currentProfilePic = pic;
   }
+
+  // addPlayer(): void {
+  //   this.dialogRef.close(this.name);
+  // }
+  addPlayer(): void {
+    this.dialogRef.close({ name: this.name, profilePic: this.currentProfilePic });
+  }
+
+
 }

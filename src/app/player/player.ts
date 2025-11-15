@@ -13,6 +13,7 @@ export class Player {
   @Input() name: string = '';
   @Input() playerActive: boolean = false;
   @Output() delete = new EventEmitter<void>();
+  @Input() currentProfilePic: string = '';
 
   onDeletePlayer() {
     this.delete.emit();
