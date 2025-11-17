@@ -1,14 +1,13 @@
 <div class="mat-dialog-container">
-    <h2 mat-dialog-title>Profile {{ data.name }}</h2>
+    <h2 mat-dialog-title>Profile  {{ data.name }}</h2>
     <mat-dialog-content>
-        <div class="profile-pictures">
-            @for (pic of allProfilePics; track pic; let i = $index;) {
-            <img src="./assets/img/profile/{{ pic }}" alt="" class="profile-pic">
-            }
-        </div>
+        @for (pic of allProfilePics; track pic; let i = $index;) {
+        <!-- <img src="./assets/img/profile/{{ pic }}" alt=""  class="profile-pic" (click)="selectPlayerPic(pic)"> -->
+        <img src="./assets/img/profile/{{ pic }}" alt=""  class="profile-pic" [mat-dialog-close]="pic">
+        }
     </mat-dialog-content>
     <mat-dialog-actions>
         <button mat-button (click)="onNoClick()">Cancel</button>
         <!-- <button mat-button (click)="saveGame()">Add</button> -->
     </mat-dialog-actions>
-</div>
+</div> 
