@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 export class EditPlayerDialog {
   constructor(@Inject(MAT_DIALOG_DATA) public data: { name: string }, public dialogRef: MatDialogRef<EditPlayerDialog>) { }
 
-  // allProfilePics = ['1fe.png', '2ma.png', '3rac.png', '4dive.png', '5bee.png', '6slo.png', '7zeb.png'];
+  allProfilePics = ['1fe.png', '2ma.png', '3rac.png', '4dive.png', '6slo.png', '7zeb.png'];
   // allProfilePics = ALL_PROFILE_PICS;
 
 
