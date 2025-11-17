@@ -42,7 +42,7 @@ export class AddPlayerDialog {
   //   this.dialogRef.close(this.name);
   // }
   addPlayer(): void {
-    this.dialogRef.close({ name: this.name });
+    this.dialogRef.close(this.name);
   }
 
 

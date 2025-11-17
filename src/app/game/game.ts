@@ -76,7 +76,7 @@ export class Game implements OnDestroy {
 
   takeCard() {
     if (this.gameData.players.length === 0) {
-      this.addPlayerNote = 'Please add players before starting the game!';
+      this.addPlayerNote = 'Please add players';
       return;
     }
     if (!this.gameData.pickCardAnimation) {
@@ -115,27 +115,28 @@ export class Game implements OnDestroy {
   }
 
   editPlayer(playerId: number) {
-    const playerName = this.gameData.players[playerId];
-    // const dialogRef = this.dialog.open(EditPlayerDialog);
-    this.openDialog(playerName);
+    console.log('editing player', playerId);
+    // const playerName = this.gameData.players[playerId];
+    const dialogRef = this.dialog.open(EditPlayerDialog);
+    // this.openDialog(playerName);
 
 
 
-    // dialogRef.afterClosed().subscribe((change: string) => {
-    //   console.log('received changes', change);
+    dialogRef.afterClosed().subscribe((change: string) => {
+      console.log('received changes', change);
 
-    // });
-
-  }
-
-  openDialog(playerName: string): void {
-    this.dialog.open(EditPlayerDialog, {
-      data: { name: playerName }
-
-    }).afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
+
   }
+
+  // openDialog(playerName: string): void {
+  //   this.dialog.open(EditPlayerDialog, {
+  //     data: { name: playerName }
+
+  //   }).afterClosed().subscribe(result => {
+  //     console.log('The dialog was closed');
+  //   });
+  // }
 
 
   deletePlayer(index: number) {
