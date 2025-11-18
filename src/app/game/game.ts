@@ -116,11 +116,15 @@ export class Game implements OnDestroy {
 
   editPlayer(playerId: number) {
     console.log('editing player', playerId);
-    // const playerName = this.gameData.players[playerId];
-    const dialogRef = this.dialog.open(EditPlayerDialog);
+    const playerName = this.gameData.players[playerId];
+    // const dialogRef = this.dialog.open(EditPlayerDialog);
+    const dialogRef = this.dialog.open(EditPlayerDialog, {
+      data: { name: playerName }
+    });
+
+
+
     // this.openDialog(playerName);
-
-
 
     dialogRef.afterClosed().subscribe((change: string) => {
       console.log('received changes', change);
