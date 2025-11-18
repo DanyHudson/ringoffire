@@ -12,6 +12,7 @@ export class Player {
 
   @Input() name: string = '';
   @Input() playerActive: boolean = false;
+  @Input() image: string = '1fe.png';
   @Output() delete = new EventEmitter<void>();
 
   onDeletePlayer() {

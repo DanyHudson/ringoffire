@@ -10,6 +10,7 @@ import { SlicePipe } from '@angular/common';
 export class PlayerMobile {
   @Input() name: string = '';
   @Input() playerActive: boolean = false;
+  @Input() image: string = '1fe.png';
   @Output() delete = new EventEmitter<void>();
 
   constructor() { }

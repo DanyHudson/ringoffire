@@ -54,6 +54,7 @@ export class Game implements OnDestroy {
         console.log('Document data:', snapshot.data());
         const data = snapshot.data();
         this.gameData.players = data.players;
+        this.gameData.profilePics = data.profilePics;
         this.gameData.stack = data.stack;
         this.gameData.playedCards = data.playedCards;
         this.gameData.currentPlayer = data.currentPlayer;
@@ -98,6 +99,7 @@ export class Game implements OnDestroy {
 
   addPlayer(name: string) {
     this.gameData.players.push(name);
+    this.gameData.profilePics.push('1fe.png'); // default profile pic
     // this.saveGame();  // calling this here would also be fine
   }
 
@@ -128,6 +130,8 @@ export class Game implements OnDestroy {
 
     dialogRef.afterClosed().subscribe((change: string) => {
       console.log('received changes', change);
+      this.gameData.profilePics[playerId] = change;
+      this.saveGame();
 
     });
 
