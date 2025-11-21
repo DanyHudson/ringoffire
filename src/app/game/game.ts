@@ -133,6 +133,7 @@ export class Game implements OnDestroy {
         console.log('received changes', change);
         this.gameData.profilePics[playerId] = change;
         this.saveGame();
+        this.cdr.detectChanges();
       }
     });
 
