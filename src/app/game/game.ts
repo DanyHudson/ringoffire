@@ -124,17 +124,21 @@ export class Game implements OnDestroy {
       data: { name: playerName }
     });
 
-
-
     // this.openDialog(playerName);
 
     dialogRef.afterClosed().subscribe((change: string) => {
       if (change) {
-        console.log('received changes', change);
-        this.gameData.profilePics[playerId] = change;
+        if (change === 'DELETE') {
+          this.gameData.players.splice(playerId, 1);
+          this.gameData.profilePics.splice(playerId, 1);
+        } else {
+          console.log('received changes', change);
+          this.gameData.profilePics[playerId] = change;
+        }
         this.saveGame();
         this.cdr.detectChanges();
       }
+
     });
 
   }

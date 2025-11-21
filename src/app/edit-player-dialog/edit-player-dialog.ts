@@ -29,9 +29,9 @@ export class EditPlayerDialog {
   onDeletePlayer() {
     this.delete.emit();
     this.dialogRef.close();
-    console.log('player deleted');
-    
+    console.log('player deleted'); 
   }
+  
 
   // deletePlayer(index: number) {
   //   this.gameData.players.splice(index, 1);
