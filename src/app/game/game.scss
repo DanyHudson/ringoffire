@@ -67,7 +67,7 @@
     }
 }
 
-.playersContainer::-webkit-scrollbar {
+.players-container::-webkit-scrollbar {
     width: 6px;
 }
 
@@ -75,12 +75,12 @@
     height: 6px;
 }
 
-.playersContainer::-webkit-scrollbar-track,
+.players-container::-webkit-scrollbar-track,
 .players-mobile-container::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.playersContainer::-webkit-scrollbar-thumb,
+.players-container::-webkit-scrollbar-thumb,
 .players-mobile-container::-webkit-scrollbar-thumb {
     background-color: orange;
     border-radius: 4px;

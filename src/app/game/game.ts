@@ -11,6 +11,7 @@ import { Injectable, inject, OnDestroy } from '@angular/core';
 import { Firestore, collection, collectionData, query, onSnapshot, doc, addDoc, updateDoc, deleteDoc } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { EditPlayerDialog } from '../edit-player-dialog/edit-player-dialog';
+import { GameOverScreen } from '../game-over-screen/game-over-screen';
 import { MatDialog } from '@angular/material/dialog';
 
 
@@ -31,6 +32,7 @@ export class Game implements OnDestroy {
   addPlayerNote: string = '';
   gamesCollection: any;
   gameId: string = '';
+  gameOver = false;
 
   unsubscribeGames: () => void = () => { };
 
@@ -75,8 +77,36 @@ export class Game implements OnDestroy {
     this.gameData;
   }
 
+  //  takeCard() {
+  //     if (this.gameData.players.length === 0) {
+  //       this.addPlayerNote = 'Please add players';
+  //       return;
+  //     }
+  //     if (!this.gameData.pickCardAnimation) {
+  //       this.gameData.currentCard = this.gameData.stack.pop() || '';
+  //       this.gameData.pickCardAnimation = true;
+  //       this.gameData.currentPlayer++;
+  //       this.gameData.currentPlayer = this.gameData.currentPlayer % this.gameData.players.length;
+  //       this.saveGame();
+
+  //       setTimeout(() => {
+  //         this.gameData.playedCards.push(this.gameData.currentCard as string);
+  //         this.gameData.pickCardAnimation = false;
+  //         this.saveGame();
+  //         this.cdr.detectChanges();
+  //       }, 1000);
+  //     }
+  //     this.addPlayerNote = '';
+  //   }
+
+
   takeCard() {
-    if (this.gameData.players.length === 0) {
+    if (this.gameData.stack.length === 0) {
+      this.gameOver = true;
+      this.openGameOverDialog();
+      // return;
+
+    } else if (this.gameData.players.length === 0) {
       this.addPlayerNote = 'Please add players';
       return;
     }
@@ -97,7 +127,19 @@ export class Game implements OnDestroy {
     this.addPlayerNote = '';
   }
 
+  openGameOverDialog() {
+    console.log('game over screen opens');
+    
+    this.dialog.open(GameOverScreen).afterClosed().subscribe(result => {
+      if (result === 'playAgain') {
+        this.newGame();
+      }
+    });
+  }
+
+
   addPlayer(name: string) {
+    name = name.trim().slice(0, 7); // enforce max length here as well
     this.gameData.players.push(name);
     this.gameData.profilePics.push('1fe.png'); // default profile pic
     // this.saveGame();  // calling this here would also be fine
@@ -142,16 +184,6 @@ export class Game implements OnDestroy {
     });
 
   }
-
-  // openDialog(playerName: string): void {
-  //   this.dialog.open(EditPlayerDialog, {
-  //     data: { name: playerName }
-
-  //   }).afterClosed().subscribe(result => {
-  //     console.log('The dialog was closed');
-  //   });
-  // }
-
 
   deletePlayer(index: number) {
     this.gameData.players.splice(index, 1);

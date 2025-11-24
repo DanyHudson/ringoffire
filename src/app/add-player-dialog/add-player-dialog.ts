@@ -23,8 +23,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AddPlayerDialog {
   name: string = '';
-  // allProfilePics = ALL_PROFILE_PICS;
-  // currentProfilePic: string = this.allProfilePics[0];
+  
   constructor(
     public dialogRef: MatDialogRef<AddPlayerDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -34,13 +33,6 @@ export class AddPlayerDialog {
     this.dialogRef.close();
   }
 
-  // selectProfilePic(pic: string): void {
-  //   this.currentProfilePic = pic;
-  // }
-
-  // addPlayer(): void {
-  //   this.dialogRef.close(this.name);
-  // }
   addPlayer(): void {
     this.dialogRef.close(this.name);
   }
