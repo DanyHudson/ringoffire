@@ -103,6 +103,7 @@ export class Game implements OnDestroy {
   takeCard() {
     if (this.gameData.stack.length === 0) {
       this.gameOver = true;
+      this.newGame();
       this.openGameOverDialog();
       // return;
 
@@ -132,7 +133,7 @@ export class Game implements OnDestroy {
     
     this.dialog.open(GameOverScreen).afterClosed().subscribe(result => {
       if (result === 'playAgain') {
-        this.newGame();
+        // this.newGame();
       }
     });
   }

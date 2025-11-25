@@ -30,9 +30,6 @@ export class StartScreen {
       console.log('New game created with ID:', docRef.id);
       this.router.navigate(['/game', docRef.id]);
     });
-
-
-    // this.router.navigate(['/game']);
   }
 
 }

@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { GameData } from '../../../src/models/game-data';
+import { Router } from '@angular/router';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule, MatDialogContent } from '@angular/material/dialog'; //, MatDialogActions
 
 @Component({
@@ -9,13 +12,26 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule, MatDialogContent } from
   styleUrl: './game-over-screen.scss',
 })
 export class GameOverScreen {
-constructor(public dialogRef: MatDialogRef<GameOverScreen>)
-{}
+  firestore = inject(Firestore);
+  constructor(public dialogRef: MatDialogRef<GameOverScreen>, private router: Router) { }
 
 
-playAgain() {
-  this.dialogRef.close('playAgain');
-}
+  playAgain() {
+    this.dialogRef.close('playAgain');
+    this.newGame();
+  }
+
+  newGame() {
+    // start game
+    // console.log('New Game started');
+    let gameData = new GameData();
+    const gamesCollection = collection(this.firestore, 'games');
+    const newGameData = gameData.toJson();
+    addDoc(gamesCollection, newGameData).then((docRef) => {
+      console.log('New game created with ID:', docRef.id);
+      this.router.navigate(['/game', docRef.id]);
+    });
+  }
 
 
 }
