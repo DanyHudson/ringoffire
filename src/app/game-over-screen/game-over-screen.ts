@@ -22,8 +22,6 @@ export class GameOverScreen {
   }
 
   newGame() {
-    // start game
-    // console.log('New Game started');
     let gameData = new GameData();
     const gamesCollection = collection(this.firestore, 'games');
     const newGameData = gameData.toJson();

@@ -30,6 +30,7 @@ export class GameInfo implements OnInit, OnChanges {
   description = '';
   @Input() activeCard: string | null = null;
   @Input() addPlayerNote: string = '';
+  @Input() gameOver: boolean = false;
 
   constructor() {
   }

@@ -105,6 +105,7 @@ export class Game implements OnDestroy {
       this.gameOver = true;
       this.newGame();
       this.openGameOverDialog();
+      this.addPlayerNote = '';
       // return;
 
     } else if (this.gameData.players.length === 0) {

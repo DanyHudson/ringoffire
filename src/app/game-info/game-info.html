@@ -3,10 +3,22 @@
         <mat-card-title>{{ title }}</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        @if (addPlayerNote) {
+        @if (gameOver) {
+        <p>Game over! Start a new game.</p>
+        } @else if (addPlayerNote) {
         <p class="add-player-note">{{ addPlayerNote }}</p>
         } @else {
         <p>{{ description }}</p>
         }
     </mat-card-content>
 </mat-card>
+
+
+
+<!-- <mat-card-content>
+    @if (addPlayerNote) {
+    <p class="add-player-note">{{ addPlayerNote }}</p>
+    } @else {
+    <p>{{ description }}</p>
+    }
+</mat-card-content> -->
