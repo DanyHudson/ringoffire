@@ -77,37 +77,12 @@ export class Game implements OnDestroy {
     this.gameData;
   }
 
-  //  takeCard() {
-  //     if (this.gameData.players.length === 0) {
-  //       this.addPlayerNote = 'Please add players';
-  //       return;
-  //     }
-  //     if (!this.gameData.pickCardAnimation) {
-  //       this.gameData.currentCard = this.gameData.stack.pop() || '';
-  //       this.gameData.pickCardAnimation = true;
-  //       this.gameData.currentPlayer++;
-  //       this.gameData.currentPlayer = this.gameData.currentPlayer % this.gameData.players.length;
-  //       this.saveGame();
-
-  //       setTimeout(() => {
-  //         this.gameData.playedCards.push(this.gameData.currentCard as string);
-  //         this.gameData.pickCardAnimation = false;
-  //         this.saveGame();
-  //         this.cdr.detectChanges();
-  //       }, 1000);
-  //     }
-  //     this.addPlayerNote = '';
-  //   }
-
-
   takeCard() {
     if (this.gameData.stack.length === 0) {
       this.gameOver = true;
-      this.newGame();
+      // this.newGame();
       this.openGameOverDialog();
-      this.addPlayerNote = '';
-      // return;
-
+      return;
     } else if (this.gameData.players.length === 0) {
       this.addPlayerNote = 'Please add players';
       return;
@@ -131,14 +106,12 @@ export class Game implements OnDestroy {
 
   openGameOverDialog() {
     console.log('game over screen opens');
-    
     this.dialog.open(GameOverScreen).afterClosed().subscribe(result => {
       if (result === 'playAgain') {
         // this.newGame();
       }
     });
   }
-
 
   addPlayer(name: string) {
     name = name.trim().slice(0, 7); // enforce max length here as well
@@ -163,12 +136,9 @@ export class Game implements OnDestroy {
   editPlayer(playerId: number) {
     console.log('editing player', playerId);
     const playerName = this.gameData.players[playerId];
-    // const dialogRef = this.dialog.open(EditPlayerDialog);
     const dialogRef = this.dialog.open(EditPlayerDialog, {
       data: { name: playerName }
     });
-
-    // this.openDialog(playerName);
 
     dialogRef.afterClosed().subscribe((change: string) => {
       if (change) {
@@ -182,9 +152,7 @@ export class Game implements OnDestroy {
         this.saveGame();
         this.cdr.detectChanges();
       }
-
     });
-
   }
 
   deletePlayer(index: number) {

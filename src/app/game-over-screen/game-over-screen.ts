@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { GameData } from '../../../src/models/game-data';
 import { Router } from '@angular/router';
+
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule, MatDialogContent } from '@angular/material/dialog'; //, MatDialogActions
 
@@ -27,7 +28,8 @@ export class GameOverScreen {
     const newGameData = gameData.toJson();
     addDoc(gamesCollection, newGameData).then((docRef) => {
       console.log('New game created with ID:', docRef.id);
-      this.router.navigate(['/game', docRef.id]);
+      // this.router.navigate(['/game', docRef.id]);
+      this.router.navigate(['/']);
     });
   }
 
