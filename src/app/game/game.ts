@@ -106,7 +106,7 @@ export class Game implements OnDestroy {
 
   openGameOverDialog() {
     console.log('game over screen opens');
-    this.dialog.open(GameOverScreen).afterClosed().subscribe(result => {
+    this.dialog.open(GameOverScreen, { disableClose: true }).afterClosed().subscribe(result => {
       if (result === 'playAgain') {
         // this.newGame();
       }

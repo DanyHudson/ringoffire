@@ -2,19 +2,18 @@
     position: relative;
     padding: 0;
     border-radius: 0 !important;
-    overflow: hidden;
-    width: 640px;
+    overflow: hidden !important;
+    // width: 640px;
     height: 340px;
-
-    // background-color: black;
-
-    // max-width: 100vw !important;
+    background-color: black;
+    max-width: 100vw !important;
     // width: 100vw !important;
     // height: 100vh !important;
     // position: relative;
     // padding: 0;
     // border-radius: 0 !important;
     // overflow: hidden;
+
 }
 
 button.play-again-btn {
@@ -25,6 +24,7 @@ button.play-again-btn {
     font-family: 'Courier New', Courier, monospace;
     font-size: 2.4em;
     font-weight: bold;
+    line-height: 1em;
     color: white;
     position: absolute;
     top: 88%;
@@ -43,15 +43,17 @@ button.play-again-btn {
     }
 }
 
+.end-game-info {
+    position: absolute;
+    bottom: 9px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-family: 'Arial', sans-serif;
+    font-size: 1em;
+}
+
 .game-over-screen-img {
-    // width: 100%;
-    // height: 100%;
-    // object-fit: cover;
-    position: absolute !important;
-    // top: 0;
-    // left: 0;
-    // right: 0;
-    // bottom: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
