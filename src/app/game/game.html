@@ -1,21 +1,19 @@
 <div class="players-container">
     @for (player of gameData.players; track player; let i = $index;) {
-    <app-player [style.top.px]="40 + i * 122" class="player-position"
-        [playerActive]="i == gameData.currentPlayer" [image]="gameData.profilePics[i]" [name]="player" (click)="editPlayer(i)">
+    <app-player [style.top.px]="40 + i * 122" class="player-position" [playerActive]="i == gameData.currentPlayer"
+        [image]="gameData.profilePics[i]" [name]="player" (click)="editPlayer(i)">
     </app-player>
     }
 </div>
 <div class="players-mobile-container">
     @for (player of gameData.players; track player; let i = $index;) {
     <app-player-mobile [style.left.px]="10 + i * 120" [style.top.px]="0" class="player-mobile-position "
-        [playerActive]="i == gameData.currentPlayer" [image]="gameData.profilePics[i]" [name]="player" (click)="editPlayer(i)">
+        [playerActive]="i == gameData.currentPlayer" [image]="gameData.profilePics[i]" [name]="player"
+        (click)="editPlayer(i)">
     </app-player-mobile>
     }
 </div>
-
 <div class="field">
-    <!-- <div> <button (click)="startNewGame()">start new game</button></div> -->
-
     <div class="card-stack">
         <!-- card stack -->
         @for (c of [0, 1, 2, 3, 4]; track c; let i = $index;) {
@@ -34,19 +32,11 @@
         @if (gameData.pickCardAnimation && gameData.currentCard) {
         <img class="pick-card" style="right: 32px;" [src]="'assets/img/cards_old/' + gameData.currentCard + '.png'"
             alt="">
-
         }
-
     </div>
-
 </div>
 
-<app-game-info 
-[activeCard]="gameData.currentCard" 
-[addPlayerNote]="addPlayerNote" 
-
-class="pin-bottom">
+<app-game-info [activeCard]="gameData.currentCard" [addPlayerNote]="addPlayerNote" class="pin-bottom">
 </app-game-info>
 
-<!-- <app-add-button class="add-btn-container" (playerAdded)="addPlayer($event)" title="Add player"></app-add-button> -->
 <app-add-button class="add-btn-container" (playerAdded)="onPlayerAdded($event)" title="Add player"></app-add-button>

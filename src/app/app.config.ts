@@ -1,6 +1,5 @@
-import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';  //, provideBrowserGlobalErrorListeners
+import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core'; 
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
@@ -8,7 +7,6 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideFirestore(() => getFirestore()),
-    // provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
     provideFirebaseApp(() => initializeApp({
@@ -19,7 +17,6 @@ export const appConfig: ApplicationConfig = {
       messagingSenderId: "778105502348",
       appId: "1:778105502348:web:03c52d667bab111f1959a9"
     })),
-
 
   ]
 };

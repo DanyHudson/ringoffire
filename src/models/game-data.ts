@@ -8,7 +8,7 @@ export class GameData {
     public currentCard: string | null = null;
 
     constructor() {
-        for (let i = 1; i < 2; i++) {  //14
+        for (let i = 1; i < 14; i++) {  
             this.stack.push('spade_' + i);
             this.stack.push('hearts_' + i);
             this.stack.push('diamonds_' + i);
@@ -28,7 +28,6 @@ export class GameData {
             currentCard: this.currentCard
         };
     }
-
 }
 
 function shuffleArray(array: any[]) {

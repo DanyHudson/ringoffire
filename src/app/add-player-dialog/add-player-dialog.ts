@@ -5,7 +5,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-// import { ALL_PROFILE_PICS } from '../../../src/models/profile-pics';
 
 @Component({
   selector: 'add-player-dialog',

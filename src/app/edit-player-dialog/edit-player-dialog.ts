@@ -14,7 +14,6 @@ export class EditPlayerDialog {
   @Output() delete = new EventEmitter<void>();
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: { name: string }, public dialogRef: MatDialogRef<EditPlayerDialog>) { }
-
   allProfilePics = ['1fe.png', '2ma.png', '3rac.png', '4dive.png', '6slo.png', '7zeb.png'];
 
   onNoClick(): void {
@@ -24,9 +23,6 @@ export class EditPlayerDialog {
   onDeletePlayer() {
     this.delete.emit();
     this.dialogRef.close();
-    console.log('player deleted');
   }
 
-
 }
-

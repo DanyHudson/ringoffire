@@ -3,7 +3,6 @@
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
-    // gap: 8px;
     height: 120px;
     background-color: rgba(0, 0, 0, 0.7);
     padding: 4px;
@@ -13,7 +12,6 @@
 
     span {
         font-size: 24px;
-        // margin-left: 16px;
         color: white;
         font-family: 'Courier New', Courier, monospace;
         overflow: hidden;
@@ -33,12 +31,9 @@
 
 .player-mobile-active {
     border: 3px solid orange;
-
 }
 
-
 .delete-player-btn {
-    // background-color: red;
     position: absolute;
     top: 0;
     left: 64px;
@@ -48,10 +43,8 @@
     font-size: 12px;
     width: 16px;
     height: 18px;
-    // border-radius: 12px;
     cursor: pointer;
     padding-bottom: 2px;
     line-height: 2px;
     font-size: 2em;
-    // font-weight: bold;
 }

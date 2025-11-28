@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectorRef, Injectable, inject, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GameData } from '../../../src/models/game-data';
 import { Player } from '../player/player';
@@ -6,9 +6,7 @@ import { PlayerMobile } from '../player-mobile/player-mobile';
 import { AddButton } from '../add-button/add-button';
 import { GameInfo } from "../game-info/game-info";
 import { Observable } from 'rxjs';
-import { Injectable, inject, OnDestroy } from '@angular/core';
-// import { FirestoreDataService } from "../firebase-services/firestore-data.service";
-import { Firestore, collection, collectionData, query, onSnapshot, doc, addDoc, updateDoc, deleteDoc } from '@angular/fire/firestore';
+import { Firestore, collection, onSnapshot, doc, updateDoc } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { EditPlayerDialog } from '../edit-player-dialog/edit-player-dialog';
 import { GameOverScreen } from '../game-over-screen/game-over-screen';
@@ -39,7 +37,7 @@ export class Game implements OnDestroy {
   firestore = inject(Firestore);
   items$: Observable<any[]> = new Observable<any[]>();
 
-  constructor(private route: ActivatedRoute, private cdr: ChangeDetectorRef, private dialog: MatDialog) {  // here 'cdr' needed to be added to be able to manually trigger the vanishing of the card
+  constructor(private route: ActivatedRoute, private cdr: ChangeDetectorRef, private dialog: MatDialog) {
     this.newGame();
     this.gamesCollection = collection(this.firestore, 'games');
   }
@@ -47,13 +45,9 @@ export class Game implements OnDestroy {
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.gameId = params['gameId'];
-      console.log(params);
-      console.log(this.gameId);
-
       this.gamesCollection = collection(this.firestore, 'games');
       const docRef = doc(this.gamesCollection, this.gameId);
       onSnapshot(docRef, (snapshot: any) => {
-        console.log('Document data:', snapshot.data());
         const data = snapshot.data();
         this.gameData.players = data.players;
         this.gameData.profilePics = data.profilePics;
@@ -80,7 +74,6 @@ export class Game implements OnDestroy {
   takeCard() {
     if (this.gameData.stack.length === 0) {
       this.gameOver = true;
-      // this.newGame();
       this.openGameOverDialog();
       return;
     } else if (this.gameData.players.length === 0) {
@@ -105,36 +98,30 @@ export class Game implements OnDestroy {
   }
 
   openGameOverDialog() {
-    console.log('game over screen opens');
     this.dialog.open(GameOverScreen, { disableClose: true }).afterClosed().subscribe(result => {
       if (result === 'playAgain') {
-        // this.newGame();
       }
     });
   }
 
   addPlayer(name: string) {
-    name = name.trim().slice(0, 7); // enforce max length here as well
+    name = name.trim().slice(0, 7);
     this.gameData.players.push(name);
-    this.gameData.profilePics.push('1fe.png'); // default profile pic
-    // this.saveGame();  // calling this here would also be fine
+    this.gameData.profilePics.push('1fe.png');
   }
 
   saveGame() {
     this.gamesCollection = collection(this.firestore, 'games');
     const docRef = doc(this.gamesCollection, this.gameId);
-    console.log('save game data check', this.gameData.toJson())
-
     updateDoc(docRef, this.gameData.toJson());
   }
 
-  onPlayerAdded(name: string) { // more elegant way to handle the event also more according to Angular naming conventions
+  onPlayerAdded(name: string) {
     this.addPlayer(name);
     this.saveGame();
   }
 
   editPlayer(playerId: number) {
-    console.log('editing player', playerId);
     const playerName = this.gameData.players[playerId];
     const dialogRef = this.dialog.open(EditPlayerDialog, {
       data: { name: playerName }
@@ -146,7 +133,6 @@ export class Game implements OnDestroy {
           this.gameData.players.splice(playerId, 1);
           this.gameData.profilePics.splice(playerId, 1);
         } else {
-          console.log('received changes', change);
           this.gameData.profilePics[playerId] = change;
         }
         this.saveGame();
